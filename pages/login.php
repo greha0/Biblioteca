@@ -1,9 +1,8 @@
 <html>
     <head>
          <link rel="icon" type="image/x-icon" href="examples/logo.png">
-         <script src="../jquery-3.7.1.min.js"></script>
         <title> Registrazione - Biblioteca </title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
 
@@ -13,33 +12,14 @@
 
         <form action="index.php" method="POST">
 
-            <!-- <label>Username: </label>
-            <input type="text" name="username"> -->
-            <div class="contNomeCognome">
-            <span><label> Nome: </label>
-            <input type="text" name="nome"></span>
-            <span><label> Cognome: </label>
-            <input type="text" name="cognome"></span>
-            </div>
-            <span><label> Data di nascita: </label>
-            <input type="date" name="data_nascita"></span>
-            <span><label> Luogo di nascita: </label>
-            <input type="text" name="luogo_nascita"></span>
-            <span><label> Codice fiscale: </label>
-            <input type="text" name="codice_fiscale"></span>
-            <span><label> Numero di telefono: </label>
-            <input type="text" name="numero_telefono"></span>
-
+            <span><label>Username: </label>
+            <input type="text" name="username"></span> 
+            <span><label> Password: </label>
+            <input type="password" name="password"></span>
             <input type="submit">
-            <p id="login" onClick="cambiaPagina()"> Hai già un account? </p>
 
         </form>
     </body>
-    <script>  
-        function cambiaPagina(){
-            window.location.replace("pages/login.php");
-        }
-    </script>
 
     <?php
         $servername = "localhost";
