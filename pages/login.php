@@ -1,8 +1,9 @@
 <html>
     <head>
-         <link rel="icon" type="image/x-icon" href="examples/logo.png">
-        <title> Registrazione - Biblioteca </title>
+        <link rel="shortcut icon" href="../examples/favicon.ico" type="image/x-icon" />
+        <title> Login - Biblioteca </title>
         <link rel="stylesheet" href="../css/style.css">
+        <script src="../jquery-3.7.1.min.js"></script>
     </head>
     <body>
 
@@ -10,12 +11,12 @@
             <p id="navTitle"> Biblioteca </p>
         </div>
 
-        <form action="index.php" method="POST">
+        <form action="login.php" method="POST" style="height:40dvh">
 
             <span><label>Username: </label>
-            <input type="text" name="username"></span> 
+            <input type="text" name="username" maxlength="64"></span> 
             <span><label> Password: </label>
-            <input type="password" name="password"></span>
+            <input type="password" name="password" maxlength="64"></span>
             <input type="submit">
 
         </form>
@@ -24,7 +25,7 @@
     <?php
         $servername = "localhost";
         $username = "root";
-        $password = ""; //bXHG8p!!4BM9Ngx
+        $password = "bXHG8p!!4BM9Ngx"; //bXHG8p!!4BM9Ngx
         $dbname = "i5ai3";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -35,26 +36,32 @@
             echo("Connesso al server<br>");
         }
 
-        $nome = $_POST["nome"];
-        $cognome = $_POST["cognome"];
-        $data_nascita = $_POST["data_nascita"];
-        $luogo_nascita = $_POST["luogo_nascita"];
-        $codice_fiscale = $_POST["codice_fiscale"];
-        $numero_telefono = $_POST["numero_telefono"];
-
         
         $username = $_POST["username"];
-        $data_creazione = date('Y-m-d');
+        $password = $_POST["password"];
 
-        $query = "INSERT INTO persona (nome, cognome, data_nascita, luogo_nascita, codice_fiscale, numero_telefono) VALUES ('$nome' , '$cognome', '$data_nascita' , '$luogo_nascita' , '$codice_fiscale' , '$numero_telefono')";
-        echo $query;
-        if (mysqli_query($conn, $query)) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        $query = "SELECT `descrizione`, `password` FROM `utente` WHERE descrizione='$username'";
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) {
+
+            $row = $result->fetch_assoc();
+
+            //Controllo la password
+            if(strcmp($row["password"], $password)==0){
+                echo "Accesso effetuato";
+                echo "<script>
+                        window.location.replace('userpage.php');
+                      </script>
+                     ";
+            } else {
+                echo "Password errata";
+            }
+            } else {
+            echo "0 results";
         }
 
         mysqli_close($conn);
-
     ?>
+
 </html>

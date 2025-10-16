@@ -27,6 +27,7 @@ form{
 input{
     height: 3.5dvh;
     box-sizing: border-box;
+    
 }
 
 
@@ -43,6 +44,7 @@ span {
     display: flex;
     flex-direction: column;
     flex: 1;
+    
 }
 
 .navbar{

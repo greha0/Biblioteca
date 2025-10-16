@@ -1,7 +1,7 @@
 <html>
     <head>
          <link rel="icon" type="image/x-icon" href="examples/logo.png">
-         <script src="../jquery-3.7.1.min.js"></script>
+         <script src="jquery-3.7.1.min.js"></script>
         <title> Registrazione - Biblioteca </title>
         <link rel="stylesheet" href="css/style.css">
     </head>
