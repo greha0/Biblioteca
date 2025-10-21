@@ -25,7 +25,7 @@
     <?php
         $servername = "localhost";
         $username = "root";
-        $password = "bXHG8p!!4BM9Ngx"; //bXHG8p!!4BM9Ngx
+        $password = ""; //bXHG8p!!4BM9Ngx
         $dbname = "i5ai3";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
