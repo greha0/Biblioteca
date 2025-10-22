@@ -1,7 +1,8 @@
 <html>
     <head>
-         <link rel="icon" type="image/x-icon" href="../examples/logo.png">
+         <link rel="icon" type="image/x-icon" href="../img/logo.png">
          <script src="../jquery-3.7.1.min.js"></script>
+         <script src="../js/script.js"></script>
         <title> Registrazione - Biblioteca </title>
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/navbarStyle.css">
@@ -10,6 +11,12 @@
 
         <div class="navbar"> 
             <p id="navTitle"> Biblioteca </p>
+            <div id="menuIcon" onclick="slideBarra()"> </div>
+        </div>
+        <div class="slideBar">
+            <div class="cell" onclick="cambiaPagina('../index.php')"> Homepage </div>
+            <div class="cell" onclick="cambiaPagina('../pages/login.php')">  Area Utente </div>
+            <div class="cell"> Amministratore </div>
         </div>
 
         <form action="index.php" method="POST">
@@ -29,15 +36,10 @@
             <span><label> Numero di telefono: </label>
             <input type="text" name="numero_telefono"></span>
             <span><input type="submit"></span>
-            <p id="login" onClick="cambiaPagina()"> Hai già un account? </p>
+            <p id="login" onClick="cambiaPagina('login.php')"> Hai già un account? </p>
 
         </form>
     </body>
-    <script>  
-        function cambiaPagina(){
-            window.location.replace("login.php");
-        }
-    </script>
 
     <?php
         $servername = "localhost";
