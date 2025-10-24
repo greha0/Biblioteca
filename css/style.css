@@ -8,9 +8,7 @@ Color palette
 *{
     font-family: Helvetica, sans-serif;
 }
-body{
-    background-color:#DEDED1 ;
-}
+
 form{
 
     display: flex;
@@ -18,7 +16,7 @@ form{
     justify-content:space-between;
     justify-self: center;
     width: 30%;
-    height: 75dvh;
+    height: 85dvh;
     background-color: #B6AE9F;
     padding: 5dvh;
     font-size: 1.7dvh;
@@ -28,7 +26,7 @@ form{
     
 }
 
-input{
+input, button{
     height: 3.5dvh;
     box-sizing: border-box;
     border: none;

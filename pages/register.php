@@ -19,62 +19,48 @@
             <div class="cell"> Amministratore </div>
         </div>
 
-        <form action="index.php" method="POST">
+        <form action="../php/register.php" method="POST">
 
-            <span><label>Username: </label>
-            <input type="text" name="username"></span>
-            <span><label> Nome: </label>
-            <input type="text" name="nome"></span>
-            <span><label> Cognome: </label>
-            <input type="text" name="cognome"></span>
-            <span><label> Data di nascita: </label>
-            <input type="date" name="data_nascita"></span>
-            <span><label> Luogo di nascita: </label>
-            <input type="text" name="luogo_nascita"></span>
-            <span><label> Codice fiscale: </label>
-            <input type="text" name="codice_fiscale"></span>
-            <span><label> Numero di telefono: </label>
-            <input type="text" name="numero_telefono"></span>
-            <span><input type="submit"></span>
+            <span>
+                <label>Username: </label>
+                <input type="text" name="username">
+            </span>
+            <span>
+                <label> Nome: </label>
+                <input type="text" name="nome">
+            </span>
+            <span>
+                <label> Cognome: </label>
+                <input type="text" name="cognome">
+            </span>
+            <span>
+                <label> Data di nascita: </label>
+                <input type="date" name="data_nascita">
+            </span>
+            <span>
+                <label> Luogo di nascita: </label>
+                <input type="text" name="luogo_nascita">
+            </span>
+            <span>
+                <label> Codice fiscale: </label>
+                <input type="text" name="codice_fiscale">
+            </span>
+            <span>
+                <label> Numero di telefono: </label>
+                <input type="text" name="numero_telefono">
+            </span>
+            <span>
+                <label> Password: </label>
+                <input type="password" name="password">
+            </span>
+            <span>
+                <button type="submit">Registrati</button>
+            </span>
+            
             <p id="login" onClick="cambiaPagina('login.php')"> Hai già un account? </p>
 
         </form>
     </body>
 
-    <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = ""; //bXHG8p!!4BM9Ngx
-        $dbname = "i5ai3";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if($conn->connect_error){
-            die("Connessione fallita: " + $conn->connect_error);
-        } else {
-            echo("Connesso al server<br>");
-        }
-
-        $nome = $_POST["nome"];
-        $cognome = $_POST["cognome"];
-        $data_nascita = $_POST["data_nascita"];
-        $luogo_nascita = $_POST["luogo_nascita"];
-        $codice_fiscale = $_POST["codice_fiscale"];
-        $numero_telefono = $_POST["numero_telefono"];
-
-        
-        $username = $_POST["username"];
-        $data_creazione = date('Y-m-d');
-
-        $query = "INSERT INTO persona (nome, cognome, data_nascita, luogo_nascita, codice_fiscale, numero_telefono) VALUES ('$nome' , '$cognome', '$data_nascita' , '$luogo_nascita' , '$codice_fiscale' , '$numero_telefono')";
-        echo $query;
-        if (mysqli_query($conn, $query)) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($conn);
-        }
-
-        mysqli_close($conn);
-
-    ?>
+    
 </html>

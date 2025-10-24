@@ -1,8 +1,14 @@
 function cambiaPagina(file){
-    window.location.replace(file);
+    $(document).ready(function(){
+        window.location.replace(file);
+    });
 }
 
 function slideBarra(){
-    $(".slideBar").slideToggle();
+    $(document).ready(function(){
+        $(".slideBar").slideToggle();
+    });
 }
+
+
 

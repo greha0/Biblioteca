@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="css/navbarStyle.css">
@@ -9,14 +13,21 @@
     <body>
         <div class="navbar"> 
             <p id="navTitle"> Biblioteca </p>
-            <div id="menuIcon"> </div>
+            <div id="menuIcon" onclick="slideBarra()"> </div>
         </div>
         <div class="slideBar">
             <div class="cell"> Homepage </div>
             <div class="cell" onclick="cambiaPagina('pages/login.php')">  Area Utente </div>
             <div class="cell"> Amministratore </div>
+            <?php
+                if(isset($_SESSION["id_persona"])){
+                echo ("<div class='cell'> Visualizza libri </div>
+                       <div class='cell'> <button type='submit'> Logout </button> </div>");
+                }
+            ?>
         </div>
-
     </body>
+
+    
     
 </html>
