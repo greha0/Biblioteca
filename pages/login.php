@@ -19,6 +19,7 @@
         </div>
 
 
+
         <form action="../php/login.php" method="POST" style="height:40dvh">
 
             <span><label>Username: </label>
@@ -27,7 +28,6 @@
             <input type="password" name="password" maxlength="64"></span>
             <button type="submit"> Accedi </button>
             <p id="login" onClick="cambiaPagina('register.php')"> Non hai ancora un account? </p>
-
         </form>
     </body>
 

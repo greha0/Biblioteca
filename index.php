@@ -17,17 +17,17 @@ session_start();
         </div>
         <div class="slideBar">
             <div class="cell"> Homepage </div>
-            <div class="cell" onclick="cambiaPagina('pages/login.php')">  Area Utente </div>
+            <div class="cell" onclick="cambiaPagina('pages/login.php')" id="areaUtente">  Area Utente </div>
             <div class="cell"> Amministratore </div>
             <?php
                 if(isset($_SESSION["id_persona"])){
                 echo ("<div class='cell'> Visualizza libri </div>
-                       <div class='cell'> <button type='submit'> Logout </button> </div>");
+                        <form action='php/logout.php' method='POST'>
+                         <div class='cell'> <button type='submit'> Logout </button> </div>
+                        </form>
+                       <script> $('#areaUtente').attr('onclick','cambiaPagina(`index.php`)'); </script>");
                 }
             ?>
         </div>
     </body>
-
-    
-    
 </html>
