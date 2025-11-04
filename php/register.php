@@ -29,10 +29,13 @@
         
         if (mysqli_query($conn, $query)) {
             echo "<script>
-                    window.location.replace('../index.php');
+                    window.location.replace('../pages/login.php');
                   </script>";
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
+
+        // last insert function
+        // Dopo di che crea un nuovo utente con INSERT nella tabella utente avendo l'idpersona la password e l'username
         mysqli_close($conn);
     ?>

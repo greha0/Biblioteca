@@ -29,7 +29,7 @@
             if(strcmp($row["password"], $password)==0){
                 echo "Accesso effetuato";
                 $_SESSION["id_persona"] = $row["id_persona"];
-                header("Location: ../index.php");
+                header("Location: ../pages/areaUtente.php");
             } else {
                 echo "Password errata";
             }

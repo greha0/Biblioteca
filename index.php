@@ -16,18 +16,22 @@ session_start();
             <div id="menuIcon" onclick="slideBarra()"> </div>
         </div>
         <div class="slideBar">
-            <div class="cell"> Homepage </div>
+            <div class="cell" onclick="cambiaPagina('index.php')"> Homepage </div>
             <div class="cell" onclick="cambiaPagina('pages/login.php')" id="areaUtente">  Area Utente </div>
-            <div class="cell"> Amministratore </div>
             <?php
                 if(isset($_SESSION["id_persona"])){
-                echo ("<div class='cell'> Visualizza libri </div>
+                echo ("<div class='cell' onclick='cambiaPagina(`pages/visualizzaLibri.php`)'> Visualizza libri </div>
                         <form action='php/logout.php' method='POST'>
                          <div class='cell'> <button type='submit'> Logout </button> </div>
                         </form>
-                       <script> $('#areaUtente').attr('onclick','cambiaPagina(`index.php`)'); </script>");
+                       <script> $('#areaUtente').attr('onclick','cambiaPagina(`pages/areaUtente.php`)'); </script>");
+
+                       //Fare una query di ricerca per controllare il ruolo che ogni utente ha, nei tre casi
+                       //cambiare il menu
                 }
+
             ?>
         </div>
+        Home
     </body>
 </html>

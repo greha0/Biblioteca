@@ -1,6 +1,6 @@
 <html>
     <head>
-         <link rel="icon" type="image/x-icon" href="../img/logo.png">
+        <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
          <script src="../jquery-3.7.1.min.js"></script>
          <script src="../js/script.js"></script>
         <title> Registrazione - Biblioteca </title>
@@ -15,8 +15,7 @@
         </div>
         <div class="slideBar">
             <div class="cell" onclick="cambiaPagina('../index.php')"> Homepage </div>
-            <div class="cell" onclick="cambiaPagina('../pages/login.php')">  Area Utente </div>
-            <div class="cell"> Amministratore </div>
+            <div class="cell" onclick="cambiaPagina('login.php')">  Area Utente </div>
         </div>
 
         <form action="../php/register.php" method="POST">
