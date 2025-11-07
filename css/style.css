@@ -1,29 +1,22 @@
 /*
 Color palette
-#B6AE9F
-#C5C7BC
-#DEDED1
-#FBF3D1
+#c2c5aa
 */
-*{
-    font-family: Helvetica, sans-serif;
+
+.error{
+    color: red;
 }
 
 form{
-
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
     justify-self: center;
     width: 30%;
-    height: 85dvh;
+    height: fit-content;
     background-color: #B6AE9F;
     padding: 5dvh;
     font-size: 1.7dvh;
     margin-top: 1%;
     box-sizing: border-box;
     color: white;
-    
 }
 
 input, button{

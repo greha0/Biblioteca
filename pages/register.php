@@ -22,35 +22,43 @@
 
             <span>
                 <label>Username: </label>
-                <input type="text" name="username">
+                <input type="text" name="username" maxlength="16">
+              
             </span>
             <span>
                 <label> Nome: </label>
-                <input type="text" name="nome">
+                <input type="text" name="nome" maxlength="50">
+         
             </span>
             <span>
                 <label> Cognome: </label>
-                <input type="text" name="cognome">
+                <input type="text" name="cognome" maxlength="50">
+               
             </span>
             <span>
                 <label> Data di nascita: </label>
-                <input type="date" name="data_nascita">
+                <input type="date" name="data_nascita" >
+             
             </span>
             <span>
                 <label> Luogo di nascita: </label>
-                <input type="text" name="luogo_nascita">
+                <input type="text" name="luogo_nascita" maxlength="64">
+              
             </span>
             <span>
                 <label> Codice fiscale: </label>
-                <input type="text" name="codice_fiscale">
+                <input type="text" name="codice_fiscale" maxlength="16">
+               
             </span>
             <span>
                 <label> Numero di telefono: </label>
-                <input type="text" name="numero_telefono">
+                <input type="text" name="numero_telefono" maxlength="16"> 
+              
             </span>
             <span>
                 <label> Password: </label>
                 <input type="password" name="password">
+                
             </span>
             <span>
                 <button type="submit">Registrati</button>
@@ -61,5 +69,10 @@
         </form>
     </body>
 
-    
+    <?php if (isset($_GET['error'])): ?>
+        <script>
+        alert("Errore: <?php echo $_GET['error']; ?>");
+        </script>
+    <?php endif; ?>
+ 
 </html>

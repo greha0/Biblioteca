@@ -1,8 +1,13 @@
+*{
+    font-family: Helvetica, sans-serif;
+
+}
+
 .navbar{
     display:flex;
     flex-direction: row;
     margin: auto;
-    background-color: #B6AE9F;
+    background-color: #656d4a;
     width: 100%;
     height: 5dvh;
     font-family: Helvetica, sans-serif;

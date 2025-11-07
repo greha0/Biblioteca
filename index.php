@@ -8,7 +8,7 @@ session_start();
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <script src="jquery-3.7.1.min.js"></script>
         <script src="js/script.js"></script>
-        <title> Home </title>
+        <title> Home - Biblioteca Incenso Verde</title>
     </head>
     <body>
         <div class="navbar"> 
@@ -25,9 +25,6 @@ session_start();
                          <div class='cell'> <button type='submit'> Logout </button> </div>
                         </form>
                        <script> $('#areaUtente').attr('onclick','cambiaPagina(`pages/areaUtente.php`)'); </script>");
-
-                       //Fare una query di ricerca per controllare il ruolo che ogni utente ha, nei tre casi
-                       //cambiare il menu
                 }
 
             ?>
