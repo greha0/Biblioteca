@@ -4,7 +4,7 @@
          <script src="../jquery-3.7.1.min.js"></script>
          <script src="../js/script.js"></script>
         <title> Registrazione - Biblioteca </title>
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/formStyle.css">
         <link rel="stylesheet" href="../css/navbarStyle.css">
     </head>
     <body>
@@ -19,6 +19,14 @@
         </div>
 
         <form action="../php/register.php" method="POST">
+        <h1> Registrati </h1>
+        <span class="error"> 
+            <?php
+             if (isset($_GET['error'])){
+             echo ("Errore nella registrazione: ".$_GET['error']);
+            }
+            ?>
+        </span>
 
             <span>
                 <label>Username: </label>
@@ -68,11 +76,4 @@
 
         </form>
     </body>
-
-    <?php if (isset($_GET['error'])): ?>
-        <script>
-        alert("Errore: <?php echo $_GET['error']; ?>");
-        </script>
-    <?php endif; ?>
- 
 </html>

@@ -1,0 +1,127 @@
+
+
+/* Form Container */
+form {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid #a4ac86;
+}
+
+/* Error Message */
+.error {
+    display: block;
+    color: #414833;
+    background-color: #f0f2e8;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-align: center;
+    border-left: 4px solid #656d4a;
+}
+
+/* Form Fields */
+form > span {
+    display: block;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: #414833; 
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #c2c5aa;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fafaf8;
+    color: #333d29;
+    transition: all 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: #656d4a;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(101, 109, 74, 0.15);
+}
+
+/* Submit Button */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #656d4a 0%, #a4ac86 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #414833 0%, #656d4a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Login Link */
+#login {
+    text-align: center;
+    color: #656d4a;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+#login:hover {
+    color: #414833;
+    text-decoration: underline;
+}
+
+h1{
+    margin-bottom:14px;
+    color:#333d29;
+    justify-self: center; 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .navbar {
+        padding: 12px 20px;
+    }
+    
+    #navTitle {
+        font-size: 20px;
+    }
+}

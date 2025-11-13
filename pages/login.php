@@ -1,8 +1,17 @@
+<?php
+session_start();
+?>
+
+<?php
+        if(isset($_SESSION["id_persona"])){
+            header("Location: ../index.php");
+        }
+    ?>
 <html>
     <head>
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
         <title> Login - Biblioteca </title>
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/formStyle.css">
         <link rel="stylesheet" href="../css/navbarStyle.css">
         <script src="../jquery-3.7.1.min.js"></script>
         <script src="../js/script.js"></script>
@@ -29,7 +38,5 @@
             <p id="login" onClick="cambiaPagina('register.php')"> Non hai ancora un account? </p>
         </form>
     </body>
-
     
-
 </html>
