@@ -6,7 +6,7 @@ $username = "i5ai3";
 $passwordDb = "password";
 $dbname = "i5ai3";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $passwordDb, $dbname);
 
 if($conn->connect_error){
     // Meglio: mostra errore su pagina login, non qui
