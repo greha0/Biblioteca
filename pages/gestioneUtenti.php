@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../css/navbarStyle.css">
+        <link rel="stylesheet" href="../css/tableStyle.css">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
         <script src="../jquery-3.7.1.min.js"></script>
         <script src="../js/script.js"></script>
@@ -22,10 +23,9 @@
                 </form>
             </div>
             <?php
-
-            $servername = "localhost";
-            $username = "root";
-            $passwordDb = "bXHG8p!!4BM9Ngx"; //bXHG8p!!4BM9Ngx
+            $servername = "mariadb";
+            $username = "i5ai3";
+            $passwordDb = "password";
             $dbname = "i5ai3";
 
             $conn = new mysqli($servername, $username, $passwordDb, $dbname);
@@ -36,12 +36,13 @@
                 ;
             }
 
-            $query = "SELECT * FROM utente"; 
+            $query = "SELECT * FROM persona"; 
 
-            $result = mysqli_query($conn, $query) or die("Invalid query"); //Running the query and storing it in result
-            $numrows = mysqli_num_rows($result);  // gets number of rows in result table
-            $numcols = mysqli_num_fields($result);   // gets number of columns in result table
-            $field = mysqli_fetch_fields($result); // gets the column names from the result table
+            //Fare una JOIN
+            $result = mysqli_query($conn, $query) or die("Invalid query"); 
+            $numrows = mysqli_num_rows($result);  
+            $numcols = mysqli_num_fields($result);   
+            $field = mysqli_fetch_fields($result); 
             $row = mysqli_fetch_array($result);
 
             print "<table border=1><tr>";
@@ -50,17 +51,17 @@
             }
             print "</tr>";
 
-            while ($row = mysqli_fetch_array($result)) {   // for loop goes round until there are no rows left
+            while ($row = mysqli_fetch_array($result)) {
             print "<tr>";
-                for ($k=0; $k<$numcols; $k++) {    //  goes around until there are no columns left
-                    print "<td>" . $row[$k] . "</td>"; //Prints the data
+                for ($k=0; $k<$numcols; $k++) {   
+                    print "<td>" . $row[$k] . "</td>"; 
             }
             print "</tr>";
             }
 
             print "</table>";
 
-            mysqli_close($con); 
+            mysqli_close($conn); 
             ?>
     </body>
 </html>

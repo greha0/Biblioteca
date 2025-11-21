@@ -22,8 +22,8 @@ session_start();
             <?php
             if(isset($_SESSION["id_persona"])){
                 if($_SESSION["id_ruolo"]==1){
-                    echo "<div class='cell' onclick='cambiaPagina(`pages/gestioneUtenti.php`)'> Gestione Utenti </div>
-                    <div class='cell' onclick='cambiaPagina(`pages/gestioneLibri.php`)'> Gestione Libri </div>";
+                    echo "<div class='cell' onclick='cambiaPagina(`gestioneUtenti.php`)'> Gestione Utenti </div>
+                    <div class='cell' onclick='cambiaPagina(`gestioneLibri.php`)'> Gestione Libri </div>";
                 }
             }
             ?>

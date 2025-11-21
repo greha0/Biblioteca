@@ -5,6 +5,7 @@ session_start();
 <?php
         if(isset($_SESSION["id_persona"])){
             header("Location: ../index.php");
+            die;
         }
     ?>
 <html>
