@@ -7,21 +7,22 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #c2c5aa 0%, #b6ad90 100%);
     min-height: 100vh;
-    padding: 20px;
+    
 }
 
 /* Navbar Styles */
 .navbar {
-    background-color: #656d4a;
+    background-color: #537673;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
-    border-end-start-radius: 0px;
+    position:sticky;
+    top: 0;
+    margin-top: -20px;
+    z-index: 1000;
 }
 
 #navTitle {
@@ -44,20 +45,21 @@ body {
 
 /* Sidebar */
 .slideBar {
-    background-color: #a4ac86;
+    background-color: #537673;
     overflow: hidden;
-    margin-bottom: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-    display: none;
+    width: 15%;
+    position: sticky;
+    top: 60px;
+    display: none;  
 }
 
 .cell {
     padding: 15px 30px;
-    color: #333d29;
+    color: white;
     cursor: pointer;
     transition: all 0.3s;
-    border-bottom: 1px solid #b6ad90;
+    border-bottom: 1px solid #ffffff;
     
 }
 
@@ -66,7 +68,7 @@ body {
 }
 
 .cell:hover {
-    background-color: #656d4a;
+    background-color: #78a9a4;
     color: #fff;
     padding-left: 40px;
 }

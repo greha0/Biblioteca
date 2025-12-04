@@ -1,0 +1,58 @@
+body{
+    background-image:url(../img/wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.content{
+    width: 60%;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 20vh;
+    background-color: #5a7a77db;
+    position: absolute;
+    top:15%;
+    left:20%;
+}
+
+.title{
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.text{
+    color: white;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.buttonContainer{
+    margin-top: 30px;
+}
+
+.actionButton{
+    background-color: #78a9a4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #537673;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    left: 0;
+    font-size: 14px;
+
+}

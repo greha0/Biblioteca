@@ -61,8 +61,13 @@
             <span>
                 <label> Numero di telefono: </label>
                 <input type="text" name="numero_telefono" maxlength="16"> 
-              
             </span>
+
+            <span>
+                <label> Email: </label>
+                <input type="email" name="email" maxlength="32"> 
+            </span>
+
             <span>
                 <label> Password: </label>
                 <input type="password" name="password">

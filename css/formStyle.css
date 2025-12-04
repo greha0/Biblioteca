@@ -1,27 +1,32 @@
 
-
+body{
+    background-image:url(../img/wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 /* Form Container */
 form {
     max-width: 600px;
     margin: 40px auto;
-    background-color: #fff;
+    background-color: #5a7a77e8;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border: 2px solid #a4ac86;
+    border: 2px solid #aac5c5;
 }
 
 /* Error Message */
 .error {
     display: block;
-    color: #414833;
-    background-color: #f0f2e8;
+    color: #5a7a77;
+    background-color: #e8f2f0;
     padding: 12px;
     border-radius: 6px;
     margin-bottom: 25px;
     font-weight: bold;
     text-align: center;
-    border-left: 4px solid #656d4a;
+    border-left: 4px solid #435b58;
 }
 
 /* Form Fields */
@@ -32,7 +37,7 @@ form > span {
 
 label {
     display: block;
-    color: #414833; 
+    color: white; 
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 14px;
@@ -40,22 +45,24 @@ label {
 
 input[type="text"],
 input[type="password"],
-input[type="date"] {
+input[type="date"],
+input[type="email"] {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #c2c5aa;
+    border: 2px solid #aac5c5;
     border-radius: 6px;
     font-size: 15px;
     background-color: #fafaf8;
-    color: #333d29;
+    color: #293d37;
     transition: all 0.3s;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
-input[type="date"]:focus {
+input[type="date"]:focus,
+input[type="email"]:focus{
     outline: none;
-    border-color: #656d4a;
+    border-color:  #3f5755;
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(101, 109, 74, 0.15);
 }
@@ -64,10 +71,9 @@ input[type="date"]:focus {
 button[type="submit"] {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #656d4a 0%, #a4ac86 100%);
+    background-color: #3a504e;
     color: #fff;
     border: none;
-    border-radius: 6px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -78,7 +84,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background: linear-gradient(135deg, #414833 0%, #656d4a 100%);
+    background-color:  #587875;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -91,7 +97,7 @@ button[type="submit"]:active {
 /* Login Link */
 #login {
     text-align: center;
-    color: #656d4a;
+    color: #e1fffc;
     margin-top: 20px;
     cursor: pointer;
     font-size: 14px;
@@ -100,13 +106,13 @@ button[type="submit"]:active {
 }
 
 #login:hover {
-    color: #414833;
+    color: #ddb1d2;
     text-decoration: underline;
 }
 
 h1{
     margin-bottom:14px;
-    color:#333d29;
+    color:#ffffff;
     justify-self: center; 
 }
 
