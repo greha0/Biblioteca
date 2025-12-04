@@ -21,6 +21,6 @@
                     <div class='cell'> <button type='submit' id="logoutButton"> Logout </button> </div>
                 </form>
             </div>
-        Gestione Libri
+        COMING SOON...
     </body>
 </html>

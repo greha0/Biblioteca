@@ -9,7 +9,7 @@ session_start();
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
         <script src="../jquery-3.7.1.min.js"></script>
         <script src="../js/script.js"></script>
-        <title> Visualizza Libri - Biblioteca Incenso Verde</title>
+        <title> Visualizza Film - Biblioteca Incenso Verde</title>
     </head>
     <body>
         <!-- NAVBAR -->
@@ -19,25 +19,21 @@ session_start();
         </div>
         <div class="slideBar">
             <div class="cell" onclick="cambiaPagina('../index.php')"> Homepage </div>
-            
-           
             <?php
             if(isset($_SESSION["id_utente"])){
 
                 if($_SESSION["ruolo"]=="utente"){
                     //possibilità di noleggio
-                    //display libri con opzione noleggio bottone
+                    //display film con opzione noleggio bottone
                     echo "<div class='cell' onclick='cambiaPagina(`visualizzaLibri.php`)'> Esplora i libri </div>
                         <div class='cell' onclick='cambiaPagina(`visualizzaFilm.php`)'> Esplora i film </div>";
                 }
 
                 echo "<div class='cell' onclick='cambiaPagina(`areaUtente.php`)'> Area Utente </div>";
-
                 echo " <form action='../php/logout.php' method='POST'>
                          <div class='cell'> <button type='submit' id='logoutButton'> Logout </button> </div>
                         </form> ";
                 } else {
-                    //se non è loggato
                     echo "<div class='cell' onclick='cambiaPagina(`visualizzaLibri.php`)'> Esplora i libri </div>
                         <div class='cell' onclick='cambiaPagina(`visualizzaFilm.php`)'> Esplora i film </div>";
                 }
@@ -54,7 +50,7 @@ session_start();
             $passwordDb = "bXHG8p!!4BM9Ngx";
             $dbname = "i5ai3-test";
 
-            $query = "SELECT `isbn`, `titolo`, `autore`, `genere` FROM `libri`";
+            $query = "SELECT `isan`, `titolo`, `autore`, `genere` FROM `film`";
 
             // Creazione connessione
             $conn = new mysqli($servername, $username, $passwordDb, $dbname);
@@ -71,7 +67,7 @@ session_start();
                 echo "<table border='1'>
                         <thead>
                         <tr>
-                            <th>ISBN</th>
+                            <th>ISAN</th>
                             <th>Titolo</th>
                             <th>Autore</th>
                             <th>Genere</th>
@@ -80,7 +76,7 @@ session_start();
                 // Stampa dei dati di ogni riga
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>" . $row["isbn"]. "</td>
+                            <td>" . $row["isan"]. "</td>
                             <td>" . $row["titolo"]. "</td>
                             <td>" . $row["autore"]. "</td>
                             <td>" . $row["genere"]. "</td>

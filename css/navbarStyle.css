@@ -22,7 +22,7 @@ body {
     position:sticky;
     top: 0;
     margin-top: -20px;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 #navTitle {
@@ -45,13 +45,14 @@ body {
 
 /* Sidebar */
 .slideBar {
-    background-color: #537673;
+    background-color: #5b8380;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 15%;
     position: sticky;
     top: 60px;
     display: none;  
+    z-index: 1000;
 }
 
 .cell {
@@ -76,27 +77,15 @@ body {
 /* Submit Button */
 #logoutButton {
     width: 100%;
-    padding: 14px;
-    background-color: #656d4a;
+    background-color: #ffffff00;
     color: #fff;
     border: none;
-    border-radius: 6px;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    margin-left: -85px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
 
-#logoutButton:hover {
-    background: linear-gradient(135deg, #414833 0%, #656d4a 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
 
-#logoutButton:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}

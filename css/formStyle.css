@@ -18,7 +18,7 @@ form {
 
 /* Error Message */
 .error {
-    display: block;
+    display:none;
     color: #5a7a77;
     background-color: #e8f2f0;
     padding: 12px;
