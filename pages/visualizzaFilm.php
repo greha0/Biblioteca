@@ -45,10 +45,10 @@ session_start();
          <div class="content">
             <?php
             // Parametri di connessione al database
-            $servername = "localhost";
-            $username = "root";
-            $passwordDb = "";
-            $dbname = "i5ai3-test";
+            $servername = "mariadb";
+            $username = "i5ai3";
+            $passwordDb = "password";
+            $dbname = "i5ai3";
 
             $query = "SELECT `isan`, `titolo`, `autore`, `genere` FROM `film`";
 
