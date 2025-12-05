@@ -8,6 +8,7 @@
         <title> Gestione Utenti - Biblioteca Incenso Verde </title>
     </head>
     <body>
+        <!-- NAVBAR -->
         <div class="navbar"> 
             <p id="navTitle"> Biblioteca </p>
             <div id="menuIcon" onclick="slideBarra()"> </div>
@@ -22,7 +23,9 @@
                     <div class='cell'> <button type='submit' id="logoutButton"> Logout </button> </div>
                 </form>
             </div>
+        <!-- FINE NAVBAR -->
 
+        <!-- Form per creare un nuovo bibliotecario -->
             <div class="creaBibliotecario">
                 <h2> Crea un nuovo bibliotecario </h2>
                 <form action="../php/creaBibliotecario.php" method="POST">
@@ -56,40 +59,14 @@
                     <input type="submit" value="Crea Bibliotecario">
                 </form>
             </div>
+        <!-- Fine form per creare un nuovo bibliotecario -->
 
-            <div class="modificaBibliotecario">
-                <h2> Modifica un bibliotecario esistente </h2>
-                <form action="../php/modificaBibliotecario.php" method="POST">
-                    <label for="cf_modifica"> Codice Fiscale del bibliotecario da modificare: </label>
-                    <input type="text" id="cf_modifica" name="cf_modifica" required><br><br>
-
-                    <label for="nuovo_username"> Nuovo Username: </label>
-                    <input type="text" id="nuovo_username" name="nuovo_username" required><br><br>
-
-                    <label for="nuova_password"> Nuova Password: </label>
-                    <input type="password" id="nuova_password" name="nuova_password" required><br><br>
-
-                    <label for="nuovo_telefono"> Nuovo telefono: </label>
-                    <input type="text" id="nuovo_telefono" name="nuovo_telefono" required><br><br>
-                    
-                    <label for="nuova_email"> Nuova Email: </label>
-                    <input type="email" id="nuova_email" name="nuova_email" required><br><br>
-
-                    <label for="nuovo_ruolo"> Nuovo Ruolo: </label>
-                    <select id="nuovo_ruolo" name="nuovo_ruolo" required>
-                        <option value="utente"> Utente </option>
-                        <option value="bibliotecario"> Bibliotecario </option>
-                        <option value="admin"> Admin </option>
-                    </select><br><br>
-
-                    <input type="submit" value="Modifica Bibliotecario">
-                </form>
-                </div>
+            <!-- Tabella di visualizzazione utenti -->
             <?php
-            $servername = "mariadb";
-            $username = "i5ai3";
-            $passwordDb = "password";
-            $dbname = "i5ai3";
+            $servername = "localhost";
+            $username = "root";
+            $passwordDb = "";
+            $dbname = "i5ai3-test";
 
             $conn = new mysqli($servername, $username, $passwordDb, $dbname);
 
@@ -115,7 +92,7 @@
                         <th>Data di Nascita</th>
                         <th>Luogo di Nascita</th>
                         <th>Email</th>
-
+                        <th> Modifica ruolo </th>
                     </tr>
                     </thead>";
             while($row = mysqli_fetch_array($result)){
@@ -129,6 +106,17 @@
                 echo "<td>" . $row['data_nascita'] . "</td>";
                 echo "<td>" . $row['luogo_nascita'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
+                echo "<td> 
+                        <form action='../php/modificaBibliotecario.php' method='POST'>
+                            <input type='hidden' name='cf_modifica' value='" . $row['cf'] . "'>
+                            <select name='nuovo_ruolo'>
+                                <option value='utente'> Utente </option>
+                                <option value='bibliotecario'> Bibliotecario </option>
+                                <option value='admin'> Admin </option>
+                            </select>
+                            <input type='submit' value='Modifica'>
+                        </form>
+                      </td>";
                 echo "</tr>";
             }
             echo "</table>
@@ -138,22 +126,20 @@
 
             <!-- Bottone per aggiungere un bibliotecario -->
              <input type="button" value="Aggiungi Bibliotecario"  id="aggiungi" onclick="$('.creaBibliotecario').show(); $('.content').hide();" >
-             <input type="button" value="Modifica Bibliotecario"  id="modifica" onclick="$('.modificaBibliotecario').show(); $('.content').hide();" >
     </body>
 
     <script>
         $(document).ready(function(){
             $(".creaBibliotecario").hide();
-            $(".modificaBibliotecario").hide();
+            
 
-            // Prevent clicks on these elements from bubbling to document
-            $("#aggiungi, #modifica").on('click', function(e){
+            // Se clicchi sul bottone non dovrebbe chiudersi il form
+            $("#aggiungi").on('click', function(e){
                 e.stopPropagation();
-                // inline onclick already shows the forms and hides .content
             });
 
-            // Clicking inside the forms should not close them
-            $(".creaBibliotecario, .modificaBibliotecario").on('click', function(e){
+            // Se clicchi dentro il form non dovrebbe chiudersi il form
+            $(".creaBibliotecario").on('click', function(e){
                 e.stopPropagation();
             });
         });
@@ -163,10 +149,6 @@
             var target = $(event.target);
             if (!target.closest('.creaBibliotecario').length && !target.closest('#aggiungi').length) {
                 $(".creaBibliotecario").hide();
-                $(".content").show();
-            }
-            if (!target.closest('.modificaBibliotecario').length && !target.closest('#modifica').length) {
-                $(".modificaBibliotecario").hide();
                 $(".content").show();
             }
         });

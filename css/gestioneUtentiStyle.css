@@ -108,47 +108,10 @@ thead{
     background-color: #2e3e3d;
 }
 
-.modificaBibliotecario{
-    display: none;
-    position: absolute;
-    top: 20%;
-    left: 35%;
-    background-color: #5a7a77e8;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border: 2px solid #aac5c5;
-    z-index: 1002;
-    
-}
-
-.modificaBibliotecario h2{
-    color: white;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.modificaBibliotecario label{
-    color: white;
-    font-weight: bold;
-}
-
-.modificaBibliotecario input[type="text"],
-.modificaBibliotecario input[type="password"],
-.modificaBibliotecario input[type="email"]{
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-    border: 2px solid #aac5c5;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-.modificaBibliotecario input[type="submit"]{
-    width: 100%;
-    padding: 12px;
-    background-color: #3a504e;
+input[type="submit"]{
+    width: 50%;
+    padding: 5px;
+    background-color: #78a9a4;
     color: #fff;
     border: none;
     font-size: 16px;
@@ -157,21 +120,16 @@ thead{
     transition: all 0.3s;
 }
 
-.modificaBibliotecario input[type="submit"]:hover{
-    background-color: #2e3e3d;
+select{
+    width: 50%;
+    padding: 5px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 2px solid #aac5c5;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-#modifica{
-    background-color: #78a9a4;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    position: absolute;
-    right: 10px;
-    top: 110px;
+input[type="submit"]:hover{
+    background-color: #5a7a77;
 }

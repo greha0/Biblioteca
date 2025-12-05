@@ -2,10 +2,10 @@
     session_start();
 
         // Connessione al database
-        $servername = "mariadb";
-        $username = "i5ai3";
-        $passwordDb = "password";
-        $dbname = "i5ai3";
+        $servername = "localhost";
+        $username = "root";
+        $passwordDb = "";
+        $dbname = "i5ai3-test";
 
         $conn = new mysqli($servername, $username, $passwordDb, $dbname);
 

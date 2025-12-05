@@ -2,10 +2,10 @@
 session_start();
 
 // Connessione al database
-$servername = "mariadb";
-$username = "i5ai3";
-$passwordDb = "password";
-$dbname = "i5ai3";
+$servername = "localhost";
+$username = "root";
+$passwordDb = "";
+$dbname = "i5ai3-test";
 $conn = new mysqli($servername, $username, $passwordDb, $dbname);
 
 // Controllo connessione
@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
         $_SESSION["username"] = $row["username"];
         $_SESSION["ruolo"] = $row["ruolo"];
 
-        header("Location: ../index.php");
+        header("Location: ../pages/areaUtente.php");
         exit;
     } else {
         header("Location: ../pages/login.php?error=password");

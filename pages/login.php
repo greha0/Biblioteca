@@ -5,7 +5,7 @@ session_start();
 <?php
 // Se l'utente è già loggato, reindirizza alla homepage
         if(isset($_SESSION["id_utente"])){
-            header("Location: ../index.php");
+            header("Location: areaUtente.php");
             exit;
         }
 ?>

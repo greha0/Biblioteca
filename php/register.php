@@ -2,10 +2,10 @@
         session_start();
 
         // Connessione al database
-        $servername = "mariadb";
-        $username = "i5ai3";
-        $passwordDb = "password";
-        $dbname = "i5ai3";
+        $servername = "localhost";
+        $username = "root";
+        $passwordDb = "";
+        $dbname = "i5ai3-test";
 
         $conn = new mysqli($servername, $username, $passwordDb, $dbname);
 
@@ -88,9 +88,7 @@
             
         // Esecuzione della query
         if (mysqli_query($conn, $query)) {
-            echo "<script>
-                    window.location.replace('../pages/login.php');
-                  </script>";
+            // Successo
         } else {
             header("Location: ../pages/register.php?error=registration_failed");
             exit;
@@ -106,7 +104,7 @@
         if (mysqli_query($conn, $query)) {
             $_SESSION["id_utente"] = mysqli_insert_id($conn);
             echo "<script>
-                    window.location.replace('../pages/login.php');
+                    window.location.replace('../pages/areaUtente.php');
                   </script>";
         } else {
             header("Location: ../pages/register.php?error=registration_failed");
