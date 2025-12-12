@@ -1,18 +1,7 @@
 <?php
 session_start();
 
-// Connessione al database
-$servername = "mariadb";
-            $username = "i5ai3";
-            $passwordDb = "password";
-            $dbname = "i5ai3";
-$conn = new mysqli($servername, $username, $passwordDb, $dbname);
-
-// Controllo connessione
-if($conn->connect_error){
-    header("Location: ../pages/login.php?errore=connessione");
-    exit;
-}
+include("../php/connessioneDatabase.php");
 
 // Recupero delle credenziali dal form
 $username = $_POST["username"];

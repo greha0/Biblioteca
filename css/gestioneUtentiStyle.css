@@ -133,3 +133,23 @@ select{
 input[type="submit"]:hover{
     background-color: #5a7a77;
 }
+
+input[type = "submit"].cancelButton{
+    background-image: url(../img/trashcan.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    padding: 10px;
+    background-color: #99636300;
+}
+
+.iconaModifica{
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/editicon.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}

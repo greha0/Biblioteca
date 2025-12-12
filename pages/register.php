@@ -21,12 +21,12 @@
         <!-- FINE NAVBAR -->
 
         <!-- Form di registrazione -->
-        <form action="../php/register.php" method="POST">
+                <form action="../php/register.php" method="POST">
         <h1> Registrati </h1>
         <span class="error"> 
             <?php
-            // Errori di registrazione
-             if (isset($_GET['error'])){
+                // Errori di registrazione
+                if (isset($_GET['error'])){
                 echo "<style> .error { display: block; } </style>";
                 if($_GET['error'] == 'cf_exists'){
                     echo ("Errore nella registrazione: Codice fiscale già esistente.");
@@ -60,52 +60,55 @@
             <span>
                 <label>Username: </label>
                 <input type="text" name="username" maxlength="16">
-              
-            </span>
-            <span>
-                <label> Nome: </label>
-                <input type="text" name="nome" maxlength="50">
-         
-            </span>
-            <span>
-                <label> Cognome: </label>
-                <input type="text" name="cognome" maxlength="50">
-               
-            </span>
-            <span>
-                <label> Data di nascita: </label>
-                <input type="date" name="data_nascita" >
-             
-            </span>
-            <span>
-                <label> Luogo di nascita: </label>
-                <input type="text" name="luogo_nascita" maxlength="64">
-              
-            </span>
-            <span>
-                <label> Codice fiscale: </label>
-                <input type="text" name="codice_fiscale" maxlength="16">
-               
-            </span>
-            <span>
-                <label> Numero di telefono: </label>
-                <input type="text" name="numero_telefono" maxlength="16"> 
             </span>
 
+            <div class="form-row">
+                <span>
+                    <label>Nome: </label>
+                    <input type="text" name="nome" maxlength="50">
+                </span>
+                <span>
+                    <label>Cognome: </label>
+                    <input type="text" name="cognome" maxlength="50">
+                </span>
+            </div>
+
+            <div class="form-row">
+                <span>
+                    <label>Data di nascita: </label>
+                    <input type="date" name="data_nascita">
+                </span>
+                <span>
+                    <label>Luogo di nascita: </label>
+                    <input type="text" name="luogo_nascita" maxlength="64">
+                </span>
+            </div>
+
+            <div class="form-row">
+                <span>
+                    <label>Codice fiscale: </label>
+                    <input type="text" name="codice_fiscale" maxlength="16">
+                </span>
+                <span>
+                    <label>Numero di telefono: </label>
+                    <input type="text" name="numero_telefono" maxlength="16"> 
+                </span>
+            </div>
+
             <span>
-                <label> Email: </label>
+                <label>Email: </label>
                 <input type="email" name="email" maxlength="32"> 
             </span>
 
             <span>
-                <label> Password: </label>
+                <label>Password: </label>
                 <input type="password" name="password">
-                
             </span>
+
             <span>
                 <button type="submit">Registrati</button>
             </span>
-            
+
             <p id="login" onClick="cambiaPagina('login.php')"> Hai già un account? </p>
 
         </form>

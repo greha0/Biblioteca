@@ -44,15 +44,3 @@ body{
     transition: background-color 0.3s;
 }
 
-footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #537673;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    left: 0;
-    font-size: 14px;
-
-}

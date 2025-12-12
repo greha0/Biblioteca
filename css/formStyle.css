@@ -10,11 +10,13 @@ form {
     max-width: 600px;
     margin: 40px auto;
     background-color: #5a7a77e8;
-    padding: 40px;
+    padding: 28px; /* ridotto da 40px per form meno alto */
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     border: 2px solid #aac5c5;
 }
+
+
 
 /* Error Message */
 .error {
@@ -32,7 +34,7 @@ form {
 /* Form Fields */
 form > span {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 12px; 
 }
 
 label {
@@ -48,7 +50,7 @@ input[type="password"],
 input[type="date"],
 input[type="email"] {
     width: 100%;
-    padding: 12px 15px;
+    padding: 10px 12px; 
     border: 2px solid #aac5c5;
     border-radius: 6px;
     font-size: 15px;
@@ -66,6 +68,23 @@ input[type="email"]:focus{
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(101, 109, 74, 0.15);
 }
+
+/* Layout a colonne per affiancare campi */
+.form-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.form-row > span {
+    flex: 1;
+    margin-bottom: 0; /* già gestito dalla form-row */
+}
+
+/* classi opzionali per larghezze diverse */
+.form-row .col-2 { flex: 2; }
+.form-row .col-1 { flex: 1; }
 
 /* Submit Button */
 button[type="submit"] {
@@ -121,6 +140,10 @@ h1{
     form {
         padding: 30px 20px;
         margin: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
     }
     
     .navbar {

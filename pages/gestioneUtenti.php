@@ -63,65 +63,57 @@
 
             <!-- Tabella di visualizzazione utenti -->
             <?php
-            $servername = "mariadb";
-            $username = "i5ai3";
-            $passwordDb = "password";
-            $dbname = "i5ai3";
 
-            $conn = new mysqli($servername, $username, $passwordDb, $dbname);
+            include("../php/connessioneDatabase.php");
+                
 
-            if($conn->connect_error){
-                die;
-            }
+                $query = "SELECT u.username, u.ruolo, p.cf, p.nome, p.cognome, p.tel, p.data_nascita, p.luogo_nascita, p.email FROM persone p INNER JOIN utenti u ON p.cf = u.cf"; 
 
-            $query = "SELECT u.username, u.ruolo, p.cf, p.nome, p.cognome, p.tel, p.data_nascita, p.luogo_nascita, p.email FROM persone p INNER JOIN utenti u ON p.cf = u.cf"; 
-
-            //JOIN tra persone e utenti
-            $result = mysqli_query($conn, $query) or die("Invalid query"); 
-            
-            echo "<div class='content'>
-                    <table>
-                    <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Ruolo</th>
-                        <th>Codice Fiscale</th>
-                        <th>Nome</th>
-                        <th>Cognome</th>
-                        <th>Telefono</th>
-                        <th>Data di Nascita</th>
-                        <th>Luogo di Nascita</th>
-                        <th>Email</th>
-                        <th> Modifica ruolo </th>
-                    </tr>
-                    </thead>";
-            while($row = mysqli_fetch_array($result)){
-                echo "<tr>";
-                echo "<td>" . $row['username'] . "</td>";
-                echo "<td>" . $row['ruolo'] . "</td>";
-                echo "<td>" . $row['cf'] . "</td>";
-                echo "<td>" . $row['nome'] . "</td>";
-                echo "<td>" . $row['cognome'] . "</td>";
-                echo "<td>" . $row['tel'] . "</td>";
-                echo "<td>" . $row['data_nascita'] . "</td>";
-                echo "<td>" . $row['luogo_nascita'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
-                echo "<td> 
-                        <form action='../php/modificaBibliotecario.php' method='POST'>
-                            <input type='hidden' name='cf_modifica' value='" . $row['cf'] . "'>
-                            <select name='nuovo_ruolo'>
-                                <option value='utente'> Utente </option>
-                                <option value='bibliotecario'> Bibliotecario </option>
-                                <option value='admin'> Admin </option>
-                            </select>
-                            <input type='submit' value='Modifica'>
-                        </form>
-                      </td>";
-                echo "</tr>";
-            }
-            echo "</table>
-                  </div>";
-            mysqli_close($conn); 
+                //JOIN tra persone e utenti
+                $result = mysqli_query($conn, $query) or die("Invalid query"); 
+                
+                echo "<div class='content'>
+                        <table>
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Ruolo</th>
+                            <th>Codice Fiscale</th>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Telefono</th>
+                            <th>Data di Nascita</th>
+                            <th>Luogo di Nascita</th>
+                            <th>Email</th>
+                            <th> </th>
+                            <th> Modifica Ruolo </th>
+                        </tr>
+                        </thead>";
+                while($row = mysqli_fetch_array($result)){
+                    echo "<tr>";
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td>" . $row['ruolo'] . "</td>";
+                    echo "<td>" . $row['cf'] . "</td>";
+                    echo "<td>" . $row['nome'] . "</td>";
+                    echo "<td>" . $row['cognome'] . "</td>";
+                    echo "<td>" . $row['tel'] . "</td>";
+                    echo "<td>" . $row['data_nascita'] . "</td>";
+                    echo "<td>" . $row['luogo_nascita'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
+                    echo "<td> 
+                            <form action='../php/eliminaUtente.php' method='POST'>
+                                <input type='hidden' name='cf_elimina' value='" . $row['cf'] . "'>
+                                <input type='submit' value='' class='cancelButton'>
+                            </form>
+                        </td>";
+                    if($row['ruolo']=='admin'){
+                        echo"<td> <div class='iconaModifica' onclick='apriModifica'>  </div> </td>";
+                    }
+                    echo "</tr>";
+                }
+                echo "</table>
+                    </div>";
+                mysqli_close($conn); 
             ?>
 
             <!-- Bottone per aggiungere un bibliotecario -->

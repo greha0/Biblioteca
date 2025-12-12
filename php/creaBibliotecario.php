@@ -1,20 +1,7 @@
 <?php
     session_start();
-
-        // Connessione al database
-        $servername = "mariadb";
-            $username = "i5ai3";
-            $passwordDb = "password";
-            $dbname = "i5ai3";
-
-        $conn = new mysqli($servername, $username, $passwordDb, $dbname);
-
-        // Controllo connessione
-        if($conn->connect_error){
-            header("Location: ../pages/gestionUtenti.php?error=connection_error");
-            die;
-        } 
-
+        include("../php/connessioneDatabase.php");
+        
         // Controllo se le variabili sono settate
         $nome = $_POST["nome"] ?? null;
         $cognome = $_POST["cognome"] ?? null;

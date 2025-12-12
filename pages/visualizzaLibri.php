@@ -48,47 +48,34 @@ session_start();
         <!-- CONTENUTO PAGINA -->
          <div class="content">
             <?php
-            // Parametri di connessione al database
-            $servername = "mariadb";
-            $username = "i5ai3";
-            $passwordDb = "password";
-            $dbname = "i5ai3";
+            
+                include("../php/connessioneDatabase.php");
 
-            $query = "SELECT `isbn`, `titolo`, `autore`, `genere` FROM `libri`";
+                $result = $conn->query($query);
 
-            // Creazione connessione
-            $conn = new mysqli($servername, $username, $passwordDb, $dbname);
-
-            // Controllo connessione
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $result = $conn->query($query);
-
-            // Controllo se ci sono risultati e li stampo in una tabella
-            if ($result->num_rows > 0) {
-                echo "<table border='1'>
-                        <thead>
-                        <tr>
-                            <th>ISBN</th>
-                            <th>Titolo</th>
-                            <th>Autore</th>
-                            <th>Genere</th>
-                        </tr>
-                        </thead>";
-                // Stampa dei dati di ogni riga
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row["isbn"]. "</td>
-                            <td>" . $row["titolo"]. "</td>
-                            <td>" . $row["autore"]. "</td>
-                            <td>" . $row["genere"]. "</td>
-                          </tr>";
-                }
-                echo "</table>";
-            } 
-            $conn->close();
+                // Controllo se ci sono risultati e li stampo in una tabella
+                if ($result->num_rows > 0) {
+                    echo "<table border='1'>
+                            <thead>
+                            <tr>
+                                <th>ISBN</th>
+                                <th>Titolo</th>
+                                <th>Autore</th>
+                                <th>Genere</th>
+                            </tr>
+                            </thead>";
+                    // Stampa dei dati di ogni riga
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                                <td>" . $row["isbn"]. "</td>
+                                <td>" . $row["titolo"]. "</td>
+                                <td>" . $row["autore"]. "</td>
+                                <td>" . $row["genere"]. "</td>
+                            </tr>";
+                    }
+                    echo "</table>";
+                } 
+                $conn->close();
             ?>
         </div>
         <!-- FINE CONTENUTO PAGINA -->
