@@ -5,7 +5,7 @@ body{
     background-attachment: fixed;
 }
 
-/* Contenuto Visualizzazione Libri */
+/* Content Container */
 .content{
     width: 80%;
     height: fit-content;
@@ -17,6 +17,7 @@ body{
     color: white;
 }
 
+/* User Table */
 table{
     width: 100%;
     border-collapse: collapse;
@@ -24,6 +25,7 @@ table{
     background-color: #537673da;
 }
 
+/* Table Headers and Cells */
 td, th{
     padding: 12px;
     text-align: left;
@@ -61,7 +63,7 @@ thead{
 .creaBibliotecario{
     display: none;
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 35%;
     background-color: #5a7a77e8;
     padding: 30px;
@@ -85,10 +87,10 @@ thead{
 .creaBibliotecario input[type="password"],
 .creaBibliotecario input[type="email"]{
     width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-    border: 2px solid #aac5c5;
+    padding: 6px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 1px solid #aac5c5;
     border-radius: 6px;
     font-size: 14px;
 }
@@ -152,4 +154,24 @@ input[type = "submit"].cancelButton{
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+}
+
+#salva{
+    background-color: #78a9a4;
+    color: white;
+    padding: 10px 20px;
+    width: fit-content;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    position: absolute;
+    right: 10px;
+    top: 120px;
+}
+
+#salva:hover{
+    background-color: #5a7a77;
 }

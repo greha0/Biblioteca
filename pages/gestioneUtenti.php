@@ -60,7 +60,6 @@
                 </form>
             </div>
         <!-- Fine form per creare un nuovo bibliotecario -->
-
             <!-- Tabella di visualizzazione utenti -->
             <?php
 
@@ -86,13 +85,25 @@
                             <th>Luogo di Nascita</th>
                             <th>Email</th>
                             <th> </th>
-                            <th> Modifica Ruolo </th>
                         </tr>
                         </thead>";
                 while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
                     echo "<td>" . $row['username'] . "</td>";
-                    echo "<td>" . $row['ruolo'] . "</td>";
+                    if($row['ruolo']=="utente" || $row['ruolo']=="admin"){
+                        echo "<td> " . ucfirst($row['ruolo']) . " </td>";
+                    } else {
+                       echo "<td>
+                          <form action='../php/salvaModifiche.php' method='POST'>
+                              <input type='hidden' name='cf_modifica' value='" . $row['cf'] . "'>
+                              <input type='hidden' name='originale_ruolo' value='" . $row['ruolo'] . "'>
+                              <select name='nuovo_ruolo' onchange='this.form.submit()'>
+                                  <option value='utente'" . ($row['ruolo'] == 'utente' ? ' selected' : '') . ">Utente</option>
+                                  <option value='bibliotecario'" . ($row['ruolo'] == 'bibliotecario' ? ' selected' : '') . ">Bibliotecario</option>
+                                  <option value='admin'" . ($row['ruolo'] == 'admin' ? ' selected' : '') . ">Admin</option>
+                              </select>
+                          </td>";
+                    }
                     echo "<td>" . $row['cf'] . "</td>";
                     echo "<td>" . $row['nome'] . "</td>";
                     echo "<td>" . $row['cognome'] . "</td>";
@@ -106,9 +117,6 @@
                                 <input type='submit' value='' class='cancelButton'>
                             </form>
                         </td>";
-                    if($row['ruolo']=='admin'){
-                        echo"<td> <div class='iconaModifica' onclick='apriModifica'>  </div> </td>";
-                    }
                     echo "</tr>";
                 }
                 echo "</table>
@@ -117,7 +125,7 @@
             ?>
 
             <!-- Bottone per aggiungere un bibliotecario -->
-             <input type="button" value="Aggiungi Bibliotecario"  id="aggiungi" onclick="$('.creaBibliotecario').show(); $('.content').hide();" >
+             <input type="button" value="Aggiungi Bibliotecario"  id="aggiungi" onclick="$('.creaBibliotecario').show(); $('.content').hide();" >    
     </body>
 
     <script>

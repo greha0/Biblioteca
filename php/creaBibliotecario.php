@@ -39,6 +39,7 @@
         }
 
         // Validazione del formato del codice fiscale (semplificata)
+        $codice_fiscale = strtoupper($codice_fiscale);
         if (!preg_match('/^[A-Z0-9]{16}$/', $codice_fiscale)) {
             header("Location: ../pages/gestioneUtenti.php?error=codice_fiscale");
             exit;
