@@ -1,0 +1,62 @@
+input[type = "submit"].cancelButton{
+    background-image: url(../img/trashcan.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    padding: 10px;
+    background-color: #99636300;
+}
+
+/* Form di aggiunta film */
+.creaFilm {
+    display: none;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #5a7a77e8;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid #aac5c5;
+}
+.creaFilm input[type="text"],
+.creaFilm input[type="date"] {
+    width: 100%;
+    padding: 10px 12px; 
+    border: 2px solid #aac5c5;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fafaf8;
+    color: #293d37;
+    transition: all 0.3s;
+}
+
+.creaFilm input[type="submit"]{
+    width: 100%;
+    padding: 12px;
+    background-color: #3a504e;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.creaFilm input[type="submit"]:hover{
+    background-color: #2e3e3d;
+}
+
+
+/* Pulsante di aggiunta film */
+#aggiungi{
+    margin-top: 40px;
+    margin-left: 90%;
+    background-color: #78a9a4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}

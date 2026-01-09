@@ -50,7 +50,8 @@ session_start();
             <?php
             
                 include("../php/connessioneDatabase.php");
-
+                // Query per selezionare tutti i libri
+                $query = "SELECT isbn, titolo, autore, genere FROM libri";
                 $result = $conn->query($query);
 
                 // Controllo se ci sono risultati e li stampo in una tabella

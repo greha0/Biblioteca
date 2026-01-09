@@ -1,5 +1,6 @@
 <?php
     // Connessione al database server SSH
+    
     $servername = "mariadb";
         $username = "i5ai3";
         $passwordDb = "password";
@@ -7,7 +8,7 @@
         
 
     // Connessione al database per sviluppo locale
-   /* $servername = "localhost";
+    /*$servername = "localhost";
     $username = "root";
     $passwordDb = "";
     $dbname = "i5ai3";*/
