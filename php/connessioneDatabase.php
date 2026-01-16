@@ -5,13 +5,15 @@
         $username = "i5ai3";
         $passwordDb = "password";
         $dbname = "i5ai3";
-        
+    
 
     // Connessione al database per sviluppo locale
-    /*$servername = "localhost";
+    /*
+    $servername = "localhost";
     $username = "root";
     $passwordDb = "";
-    $dbname = "i5ai3";*/
+    $dbname = "i5ai3";
+    */
 
     // Creazione connessione
     $conn = new mysqli($servername, $username, $passwordDb, $dbname);

@@ -2,36 +2,36 @@
     session_start();
     include("../php/connessioneDatabase.php");
 
-    // Recupero dell'ISAN del film da eliminare
-    $isan = $_POST["isan"] ?? null;
+    // Recupero dell'ISBN del libro da eliminare
+    $isbn = $_POST["isbn"] ?? null;
 
     // Query di eliminazione
 
-    $query = "DELETE FROM film WHERE isan='$isan'";
+    $query = "DELETE FROM libri WHERE isbn='$isbn'";
 
     // Controllo se la quantità è maggiore di 1
-    $checkQuery = "SELECT quantita FROM film WHERE isan='$isan'";
+    $checkQuery = "SELECT quantita FROM libri WHERE isbn='$isbn'";
     $checkResult = $conn->query($checkQuery);
     if ($checkResult->num_rows > 0) {
         $row = $checkResult->fetch_assoc();
         if ($row['quantita'] > 1) {
             // Decremento la quantità di 1
-            $decrementQuery = "UPDATE film SET quantita = quantita - 1 WHERE isan='$isan'";
+            $decrementQuery = "UPDATE libri SET quantita = quantita - 1 WHERE isbn='$isbn'";
             if (mysqli_query($conn, $decrementQuery)) {
-                header("Location: ../pages/gestioneFilm.php");
+                header("Location: ../pages/gestioneLibri.php");
                 exit;
             } else {
-                header("Location: ../pages/gestioneFilm.php?error=decrement_failed");
+                header("Location: ../pages/gestioneLibri.php?error=decrement_failed");
                 exit;
             }
         }
     }
 
     if (mysqli_query($conn, $query)) {
-        header("Location: ../pages/gestioneFilm.php");
+        header("Location: ../pages/gestioneLibri.php");
         exit;
     } else {
-        header("Location: ../pages/gestioneFilm.php?error=delete_failed");
+        header("Location: ../pages/gestioneLibri.php?error=delete_failed");
         exit;
     }
 ?>

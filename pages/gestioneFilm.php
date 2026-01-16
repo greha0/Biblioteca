@@ -23,26 +23,7 @@ session_start();
             <div class="cell" onclick="cambiaPagina('gestioneFilm.php')"> Gestione Film </div>
             <div class="cell" onclick="cambiaPagina('gestioneLibri.php')"> Gestione Libri </div>
 
-            <!-- Aggiungi film -->
-            <div class="creaFilm">
-                <h2>Aggiungi un nuovo film</h2>
-                <form action="../php/aggiungiFilm.php" method="POST">
-                    <label for="isan">ISAN:</label>
-                    <input type="text" id="isan" name="isan" required>
-
-                    <label for="titolo">Titolo:</label>
-                    <input type="text" id="titolo" name="titolo" required>
-
-                    <label for="autore">Autore:</label>
-                    <input type="text" id="autore" name="autore" required>
-
-                    <label for="genere">Genere:</label>
-                    <input type="text" id="genere" name="genere" required>
-
-                    <input type="submit" value="Aggiungi Film">
-                </form>
-            </div>
-            <!-- FINE Aggiungi film -->
+            
             <?php
             if(isset($_SESSION["id_utente"])){
 
@@ -64,13 +45,34 @@ session_start();
         </div>
         <!-- FINE NAVBAR -->
 
+        <!-- Aggiungi film -->
+            <div class="crea">
+                <h2>Aggiungi un nuovo film</h2>
+                <form action="../php/aggiungiFilm.php" method="POST">
+                    <label for="isan">ISAN:</label>
+                    <input type="text" id="isan" name="isan" required>
+
+                    <label for="titolo">Titolo:</label>
+                    <input type="text" id="titolo" name="titolo" required>
+
+                    <label for="autore">Autore:</label>
+                    <input type="text" id="autore" name="autore" required>
+
+                    <label for="genere">Genere:</label>
+                    <input type="text" id="genere" name="genere" required>
+
+                    <input type="submit" value="Aggiungi Film">
+                </form>
+            </div>
+            <!-- FINE Aggiungi film -->
+
         <!-- CONTENUTO PAGINA -->
          <div class="content">
             <?php
 
                 include("../php/connessioneDatabase.php");
 
-                $query = "SELECT `isan`, `titolo`, `autore`, `genere` FROM `film`";
+                $query = "SELECT `isan`, `titolo`, `autore`, `genere`, `quantita` FROM `film`";
 
                 $result = $conn->query($query);
 
@@ -83,6 +85,7 @@ session_start();
                                 <th>Titolo</th>
                                 <th>Autore</th>
                                 <th>Genere</th>
+                                <th>Quantità</th>
                                 <td> </td>
                             </tr>
                             </thead>";
@@ -93,6 +96,7 @@ session_start();
                                 <td>" . $row["titolo"]. "</td>
                                 <td>" . $row["autore"]. "</td>
                                 <td>" . $row["genere"]. "</td>
+                                <td>" . $row["quantita"]. "</td>
                                 <td> <form action='../php/eliminaFilm.php' method='POST'>
                                         <input type='hidden' name='isan' value='" . $row["isan"] . "'>
                                         <input type='submit' class='cancelButton' value=''>
@@ -103,9 +107,10 @@ session_start();
                 } 
                 $conn->close();
             ?>
+            <!-- Bottone per aggiungere un film -->
+             <input type="button" value="Aggiungi Film"  id="aggiungi" onclick="$('.crea').show(); $('.content').hide();" >    
+            <!-- FINE CONTENUTO PAGINA -->
         </div>
-        <!-- Bottone per aggiungere un film -->
-             <input type="button" value="Aggiungi Film"  id="aggiungi" onclick="$('.creaFilm').show(); $('.content').hide();" >    
-        <!-- FINE CONTENUTO PAGINA -->
+        
     </body>
 </html>
