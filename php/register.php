@@ -31,6 +31,10 @@
         exit;
     }
 
+    // Crittografia della password
+    $password = crypt($password, '$2y$10$forzanapoli2026salt$');
+
+
     // Validazione del formato del numero di telefono
     if (!preg_match('/^[0-9]{10}$/', $numero_telefono)) {
         header("Location: ../pages/register.php?error=numero_telefono");
