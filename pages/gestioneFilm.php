@@ -93,7 +93,7 @@ session_start();
                     }
                 }
 
-                $query = "SELECT `isan`, `titolo`, `autore`, `genere`, `quantita`, `prezzo` FROM `film`";
+                $query = "SELECT `isan`, `titolo`, `autore`, `genere`, `quantita`, `prezzo`, `data_aggiunta` FROM `film`";
 
                 $result = $conn->query($query);
 
@@ -107,7 +107,8 @@ session_start();
                                 <th>Autore</th>
                                 <th>Genere</th>
                                 <th>Quantità</th>
-                                <th> Prezzo Noleggio <br> (al mese) </th>
+                                <th> Data Aggiunta </th>
+                                <th> Prezzo Noleggio  (al mese) </th>
                                 <td> </td>
                             </tr>
                             </thead>";
@@ -119,6 +120,7 @@ session_start();
                                 <td>" . $row["autore"]. "</td>
                                 <td>" . $row["genere"]. "</td>
                                 <td>" . $row["quantita"]. "</td>
+                                <td>" .$row["data_aggiunta"]. "</td>
                                 
                                 <td> <form  method='POST'>
                                         <input type='hidden' name='isan' value='" . $row["isan"] . "'>

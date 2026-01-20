@@ -90,7 +90,7 @@ session_start();
                     }
                 }
 
-                $query = "SELECT `isbn`, `titolo`, `autore`, `genere`, `quantita`, `prezzo` FROM `libri`";
+                $query = "SELECT `isbn`, `titolo`, `autore`, `genere`, `quantita`, `prezzo`, `data_aggiunta` FROM `libri`";
 
                 $result = $conn->query($query);
 
@@ -105,7 +105,7 @@ session_start();
                                 <th>Genere</th>
                                 <th>Quantità</th>
                                 <th> Prezzo Noleggio <br> (al mese) </th>
-                                <td> </td>
+                                <th> Data Aggiunta </th>
                             </tr>
                             </thead>";
                     // Stampa dei dati di ogni riga
@@ -116,6 +116,7 @@ session_start();
                                 <td>" . $row["autore"]. "</td>
                                 <td>" . $row["genere"]. "</td>
                                 <td>" . $row["quantita"]. "</td>
+                                <td>" . $row["data_aggiunta"]. "</td>
                                 <td> <form  method='POST'>
                                         <input type='hidden' name='isbn' value='" . $row["isbn"] . "'>
                                         <input type='number' step='0.01' name='prezzo' value='" . $row["prezzo"] . "' required>
