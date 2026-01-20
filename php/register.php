@@ -32,7 +32,7 @@
     }
 
     // Crittografia della password
-    $password = crypt($password, '$2y$10$forzanapoli2026salt$');
+    $password = password_hash($password, PASSWORD_BCRYPT);
 
 
     // Validazione del formato del numero di telefono

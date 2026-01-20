@@ -23,7 +23,8 @@ input[type = "submit"].cancelButton{
     color: white;
 }
 .crea input[type="text"],
-.crea input[type="date"] {
+.crea input[type="date"],
+.crea input[type="number"] {
     width: 100%;
     padding: 10px 12px; 
     border: 2px solid #aac5c5;
@@ -31,6 +32,7 @@ input[type = "submit"].cancelButton{
     font-size: 15px;
     background-color: #fafaf8;
     transition: all 0.3s;
+    margin-bottom: 16px;
 }
 
 .crea input[type="submit"]{
@@ -50,6 +52,7 @@ input[type = "submit"].cancelButton{
 }
 
 
+
 /* Pulsante di aggiunta film */
 #aggiungi{
     position: absolute;
@@ -63,3 +66,27 @@ input[type = "submit"].cancelButton{
     font-size: 16px;
     transition: background-color 0.3s;
 }
+
+input[type = "submit"].saveButton{
+    top: 10px;
+    background-color: #78a9a4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+input[type="number"]{
+    width: 30%;
+    padding: 10px 12px; 
+    border: 2px solid #aac5c5;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fafaf8;
+    transition: all 0.3s;
+    margin-bottom: 16px;
+}
+

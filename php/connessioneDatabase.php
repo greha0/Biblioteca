@@ -1,19 +1,19 @@
 <?php
     // Connessione al database server SSH
     
-    $servername = "mariadb";
+    /*$servername = "mariadb";
         $username = "i5ai3";
         $passwordDb = "password";
         $dbname = "i5ai3";
-    
+    */
 
     // Connessione al database per sviluppo locale
-    /*
+    
     $servername = "localhost";
     $username = "root";
-    $passwordDb = "";
+    $passwordDb = "bXHG8p!!4BM9Ngx"; //bxHG8p!!48M9Ngx
     $dbname = "i5ai3";
-    */
+    
 
     // Creazione connessione
     $conn = new mysqli($servername, $username, $passwordDb, $dbname);

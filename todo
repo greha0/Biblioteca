@@ -1,5 +1,7 @@
 - Gestione prenotazioni
 - In aggiungi libri e film mettere il genere come checkbox
 - Cambiare la homepage e l'area utente
-- Crittografare le password
 - Gestione degli errori
+- Facilitare l'uscita dal menu aggiungi libro/film
+- Copertina Libri / Film
+- Aggiungere nel database la data di aggiunta dei film/libri

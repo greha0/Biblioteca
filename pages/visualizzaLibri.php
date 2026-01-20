@@ -51,7 +51,7 @@ session_start();
             
                 include("../php/connessioneDatabase.php");
                 // Query per selezionare tutti i libri
-                $query = "SELECT isbn, titolo, autore, genere FROM libri";
+                $query = "SELECT isbn, titolo, autore, genere, prezzo FROM libri";
                 $result = $conn->query($query);
 
                 // Controllo se ci sono risultati e li stampo in una tabella
@@ -63,6 +63,7 @@ session_start();
                                 <th>Titolo</th>
                                 <th>Autore</th>
                                 <th>Genere</th>
+                                <th> Prezzo Noleggio <br> (al mese) </th>
                             </tr>
                             </thead>";
                     // Stampa dei dati di ogni riga
@@ -72,6 +73,7 @@ session_start();
                                 <td>" . $row["titolo"]. "</td>
                                 <td>" . $row["autore"]. "</td>
                                 <td>" . $row["genere"]. "</td>
+                                <td> " . $row["prezzo"]. " € </td>
                             </tr>";
                     }
                     echo "</table>";

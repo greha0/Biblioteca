@@ -61,6 +61,12 @@ session_start();
                     <label for="genere">Genere:</label>
                     <input type="text" id="genere" name="genere" required>
 
+                    <label for="quantita">Quantità:</label>
+                    <input type="number" id="quantita" name="quantita" required>
+
+                    <label for="prezzo">Prezzo Noleggio (al mese):</label>
+                    <input type="number" step="0.01" id="prezzo" name="prezzo" required>
+
                     <input type="submit" value="Aggiungi Film">
                 </form>
             </div>
@@ -72,7 +78,22 @@ session_start();
 
                 include("../php/connessioneDatabase.php");
 
-                $query = "SELECT `isan`, `titolo`, `autore`, `genere`, `quantita` FROM `film`";
+                // Gestione aggiornamento prezzo
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['isan']) && isset($_POST['prezzo'])) {
+                    $isan = $_POST['isan'];
+                    $prezzo = $_POST['prezzo'];
+                    
+                    $updateQuery = "UPDATE film SET prezzo = $prezzo WHERE isan='$isan'";
+                    
+                    if (mysqli_query($conn, $updateQuery)) {
+                        header('Location: gestioneFilm.php');
+                        exit();
+                    } else {
+                        echo 'Errore durante l\'aggiornamento del prezzo: ' . mysqli_error($conn);
+                    }
+                }
+
+                $query = "SELECT `isan`, `titolo`, `autore`, `genere`, `quantita`, `prezzo` FROM `film`";
 
                 $result = $conn->query($query);
 
@@ -86,6 +107,7 @@ session_start();
                                 <th>Autore</th>
                                 <th>Genere</th>
                                 <th>Quantità</th>
+                                <th> Prezzo Noleggio <br> (al mese) </th>
                                 <td> </td>
                             </tr>
                             </thead>";
@@ -97,6 +119,14 @@ session_start();
                                 <td>" . $row["autore"]. "</td>
                                 <td>" . $row["genere"]. "</td>
                                 <td>" . $row["quantita"]. "</td>
+                                
+                                <td> <form  method='POST'>
+                                        <input type='hidden' name='isan' value='" . $row["isan"] . "'>
+                                        <input type='number' step='0.01' name='prezzo' value='" . $row["prezzo"] . "' required>
+                                        <input type='submit' class='saveButton' value='Salva'>
+                                     </form>
+                                </td>";
+                                echo "<td>
                                 <td> <form action='../php/eliminaFilm.php' method='POST'>
                                         <input type='hidden' name='isan' value='" . $row["isan"] . "'>
                                         <input type='submit' class='cancelButton' value=''>

@@ -7,6 +7,8 @@
     $titolo = $_POST["titolo"] ?? null;
     $autore = $_POST["autore"] ?? null;
     $genere = $_POST["genere"] ?? null;
+    $quantita = $_POST["quantita"] ?? null;
+    $prezzo = $_POST["prezzo"] ?? null;
 
     //Elimino eventuali trattini dall'ISBN
     $isbn = str_replace('-', '', $isbn);
@@ -16,7 +18,7 @@
     $checkResult = $conn->query($checkQuery);
     if ($checkResult->num_rows > 0) {
         //Aggiungo 1 alla quantita di libri esistenti
-        $addQuery = "UPDATE libri SET quantita = quantita + 1 WHERE isbn='$isbn'";
+        $addQuery = "UPDATE libri SET quantita = quantita + $quantita WHERE isbn='$isbn'";
         if (mysqli_query($conn, $addQuery)) {
             header("Location: ../pages/gestioneLibri.php");
             exit;
@@ -26,7 +28,7 @@
         }
     }else{
         // Inserimento del nuovo film nel database
-        $query = "INSERT INTO libri (isbn, titolo, autore, genere, quantita) VALUES ('$isbn', '$titolo', '$autore', '$genere', 1)";
+        $query = "INSERT INTO libri (isbn, titolo, autore, genere, prezzo) VALUES ('$isbn', '$titolo', '$autore', '$genere', $prezzo)";
         if (mysqli_query($conn, $query)) {
             header("Location: ../pages/gestioneLibri.php");
             exit;
