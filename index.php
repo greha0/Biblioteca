@@ -41,8 +41,8 @@ session_start();
                     if($_SESSION["ruolo"]=="utente"){
                         //possibilità di noleggio
                         //display libri con opzione noleggio bottone
-                        echo "<div class='cell' onclick='cambiaPagina(`pages/visualizzaLibri.php`)'> Esplora libri </div>
-                            <div class='cell' onclick='cambiaPagina(`pages/visualizzaFilm.php`)'> Esplora film </div>";
+                        echo "<div class='cell' onclick='cambiaPagina(`pages/prenota.php`)'> Esplora libri </div>
+                            <div class='cell' onclick='cambiaPagina(`pages/prenota.php`)'> Esplora film </div>";
                     }
                     
                     echo "<div class='cell' onclick='cambiaPagina(`pages/areaUtente.php`)'> Area Utente </div>";

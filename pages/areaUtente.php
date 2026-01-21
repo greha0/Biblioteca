@@ -34,8 +34,8 @@ session_start();
                 }
 
                 if($_SESSION["ruolo"]=="utente"){
-                    echo "<div class='cell' onclick='cambiaPagina(`visualizzaLibri.php`)'> Esplora i libri </div>
-                        <div class='cell' onclick='cambiaPagina(`visualizzaFilm.php`)'> Esplora i film </div>";
+                    echo "<div class='cell' onclick='cambiaPagina(`prenota.php`)'> Esplora i libri </div>
+                        <div class='cell' onclick='cambiaPagina(`prenota.php`)'> Esplora i film </div>";
                 } 
             }
             ?>

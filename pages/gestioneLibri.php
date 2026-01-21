@@ -106,6 +106,8 @@ session_start();
                                 <th>Quantità</th>
                                 <th> Prezzo Noleggio <br> (al mese) </th>
                                 <th> Data Aggiunta </th>
+                                <th> </th>
+                                <th> </th>
                             </tr>
                             </thead>";
                     // Stampa dei dati di ogni riga

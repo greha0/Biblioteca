@@ -1,0 +1,83 @@
+body {
+    background-image: url(../img/wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Content Container */
+.content {
+    width: 80%;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 5vh;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    color: white;
+    background-color: #5a7a77e8;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid #aac5c5;
+}
+
+.content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Filter Section */
+.filtro input[type="text"] {
+    width: 30%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 2px solid #aac5c5;
+    border-radius: 6px;
+    background-color: #fafaf8;
+    color: #293d37;
+    transition: all 0.3s;
+}
+
+.filtro input[type="text"]:focus {
+    outline: none;
+    border-color: #3f5755;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(101, 109, 74, 0.15);
+}
+
+.filtro label {
+    margin-right: 10px;
+    color: white;
+    font-weight: 500;
+}
+
+.filtro select {
+    padding: 10px 12px;
+    border: 2px solid #aac5c5;
+    border-radius: 6px;
+    background-color: #fafaf8;
+    color: #293d37;
+    transition: all 0.3s;
+    margin-right: 15px;
+}
+
+.filtro select:focus {
+    outline: none;
+    border-color: #3f5755;
+    background-color: #fff;
+}
+
+.filtro button {
+    padding: 10px 20px;
+    background-color: #3a504e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.filtro button:hover {
+    background-color: #2d3d3b;
+}
