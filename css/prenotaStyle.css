@@ -81,3 +81,15 @@ body {
 .filtro button:hover {
     background-color: #2d3d3b;
 }
+
+#risorseContainer button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #3a504e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}

@@ -56,12 +56,44 @@
                 <!-- Visualizzazioni delle risorse filtrate -->
                  <?php
                     include("../php/connessioneDatabase.php");
-                    $query = "SELECT titolo, autore, genere, prezzo, isbn AS codice, quantita, 'Libro' AS tipo 
-                    FROM libri
-                    UNION
-                    SELECT titolo, autore, genere, prezzo, isan AS codice, quantita, 'Film' AS tipo 
-                    FROM film";  
-                    // Visualizzazione della query in tabella e checkbox
+                    
+                    // Costruisci le WHERE conditions per i filtri
+                    $whereConditions = "";
+                    
+                    if (isset($_GET['genere']) && $_GET['genere'] !== '') {
+                        $genere = mysqli_real_escape_string($conn, $_GET['genere']);
+                        $whereConditions .= " WHERE genere = '$genere'";
+                    }
+                    
+                    if (isset($_GET['autore']) && $_GET['autore'] !== '') {
+                        $autore = mysqli_real_escape_string($conn, $_GET['autore']);
+                        if ($whereConditions === "") {
+                            $whereConditions .= " WHERE autore LIKE '%$autore%'";
+                        } else {
+                            $whereConditions .= " AND autore LIKE '%$autore%'";
+                        }
+                    }
+                    
+                    // Determina il filtro per tipo
+                    $tipoFilter = "";
+                    if (isset($_GET['tipo']) && $_GET['tipo'] !== '') {
+                        $tipo = $_GET['tipo'];
+                        if ($tipo == 'libro') {
+                            $tipoFilter = " WHERE tipo = 'Libro'";
+                        } elseif ($tipo == 'film') {
+                            $tipoFilter = " WHERE tipo = 'Film'";
+                        }
+                    }
+                    
+                    // Costruisci la query con i filtri inseriti nelle subquery
+                    $query = "SELECT * FROM (
+                        SELECT titolo, autore, genere, prezzo, isbn AS codice, quantita, 'Libro' AS tipo 
+                        FROM libri $whereConditions
+                        UNION
+                        SELECT titolo, autore, genere, prezzo, isan AS codice, quantita, 'Film' AS tipo 
+                        FROM film $whereConditions
+                    ) AS risultati" . $tipoFilter;
+
                     $result = $conn->query($query);
                     if ($result->num_rows > 0) {
                         echo "<form action='../php/prenotaRisorsa.php' method='POST'>";
@@ -79,9 +111,17 @@
                                 </thead>
                                 <tbody>";
                         while($row = $result->fetch_assoc()) {
+
+                        // Determina il tipo di risorsa
                             $tipo = $row["tipo"];
+
+                        // Stampa solo le risorse disponibili
+                            if ($row["quantita"] <= 0) {
+                                continue;
+                            }
+                            // Stampa la riga della tabella
                             echo "<tr>
-                                    <td><input type='checkbox' name='selezionati[]' value='" . $row["codice"] . "'></td>
+                                    <td><input type='checkbox' class='checkbox-risorsa' name='selezionati[]' value='" . $row["codice"] . "' data-prezzo='" . $row["prezzo"] . "'></td>
                                     <td>" . $tipo . "</td>
                                     <td>" . $row["titolo"] . "</td>
                                     <td>" . $row["autore"] . "</td>
@@ -90,9 +130,29 @@
                                     <td>" . $row["quantita"] . "</td>
                                   </tr>";
                         }
+                        // Chiusura della tabella
+
+                        // Aggiunta del campo data scadenza e del prezzo totale
                         echo "</tbody></table>";
-                        echo "<button type='submit'>Prenota Risorse Selezionate</button>";
+                        echo "<label> Data Scadenza: </label>";
+                        echo "<input type='date' name='data_scadenza' required>";
+                        echo "<label> Prezzo Totale: </label>";
+                        echo "<span id='prezzoTotale'>0</span> €";
+                        echo "<button type='submit'> Prenota Risorse Selezionate </button>";
                         echo "</form>";
+                        echo "<script>
+                            $(document).ready(function() {
+                                $('.checkbox-risorsa').on('change', function() {
+                                    let totale = 0;
+                                    $('.checkbox-risorsa:checked').each(function() {
+                                        totale += parseFloat($(this).data('prezzo'));
+                                    });
+                                    $('#prezzoTotale').text(totale.toFixed(2));
+                                });
+                            });
+                        </script>";
+                        // Chiusura della connessione
+                        mysqli_close($conn);
                     } else {
                         echo "Nessuna risorsa trovata.";
                     }
