@@ -61,9 +61,6 @@ session_start();
                     <label for="genere">Genere:</label>
                     <input type="text" id="genere" name="genere" required>
 
-                    <label for="quantita">Quantità:</label>
-                    <input type="number" id="quantita" name="quantita" required>
-
                     <label for="prezzo">Prezzo Noleggio (al mese):</label>
                     <input type="number" step="0.01" id="prezzo" name="prezzo" required>
 
@@ -93,7 +90,7 @@ session_start();
                     }
                 }
 
-                $query = "SELECT `isan`, `titolo`, `autore`, `genere`, `quantita`, `prezzo`, `data_aggiunta` FROM `film`";
+                $query = "SELECT `filmID`, `isan`, `titolo`, `autore`, `genere`, `prezzo`, `data_aggiunta` FROM `film`";
 
                 $result = $conn->query($query);
 
@@ -102,11 +99,11 @@ session_start();
                     echo "<table border='1'>
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>ISAN</th>
                                 <th>Titolo</th>
                                 <th>Autore</th>
                                 <th>Genere</th>
-                                <th>Quantità</th>
                                 <th> Data Aggiunta </th>
                                 <th> Prezzo Noleggio  (al mese) </th>
                                 <th> </th>
@@ -116,11 +113,11 @@ session_start();
                     // Stampa dei dati di ogni riga
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>
+                                <td>" . $row["filmID"]. "</td>
                                 <td>" . $row["isan"]. "</td>
                                 <td>" . $row["titolo"]. "</td>
                                 <td>" . $row["autore"]. "</td>
                                 <td>" . $row["genere"]. "</td>
-                                <td>" . $row["quantita"]. "</td>
                                 <td>" .$row["data_aggiunta"]. "</td>
                                 
                                 <td> <form  method='POST'>

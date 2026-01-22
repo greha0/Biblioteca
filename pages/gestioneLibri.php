@@ -58,9 +58,6 @@ session_start();
                     <label for="genere">Genere:</label>
                     <input type="text" id="genere" name="genere" required>
 
-                    <label for="quantita">Quantità:</label>
-                    <input type="number" id="quantita" name="quantita" required>
-
                     <label for="prezzo">Prezzo Noleggio (al mese):</label>
                     <input type="number" step="0.01" id="prezzo" name="prezzo" required>
 

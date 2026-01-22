@@ -16,8 +16,10 @@
         </div>
         <div class="slideBar">
             <div class="cell" onclick="cambiaPagina('../index.php')"> Homepage </div>
-            <div class="cell" onclick="cambiaPagina('visualizzaLibri.php')"> Esplora i libri </div>
-            <div class="cell" onclick="cambiaPagina('visualizzaFilm.php')"> Esplora i film </div>
+            <div class="cell" onclick="cambiaPagina('prenota.php')"> Prenota </div>
+            <form action="../php/logout.php" method="POST">
+                <button type="submit" class="cell" id="logoutButton"> Logout </button>
+            </form>
         </div>
         <!-- FINE NAVBAR -->
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 20, 2026 alle 23:41
+-- Creato il: Gen 22, 2026 alle 09:26
 -- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.2.12
+-- Versione PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,36 +32,36 @@ CREATE TABLE `film` (
   `titolo` varchar(254) NOT NULL,
   `autore` varchar(32) NOT NULL,
   `genere` varchar(32) NOT NULL,
-  `quantita` int(11) NOT NULL DEFAULT 1,
   `prezzo` decimal(10,0) NOT NULL COMMENT 'Prezzo al mese',
-  `data_aggiunta` date NOT NULL DEFAULT current_timestamp()
+  `data_aggiunta` date NOT NULL DEFAULT current_timestamp(),
+  `filmID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `film`
 --
 
-INSERT INTO `film` (`isan`, `titolo`, `autore`, `genere`, `quantita`, `prezzo`, `data_aggiunta`) VALUES
-('0000-0001-2023-0000-A', 'Blade Runner 2049', 'Denis Villeneuve', 'Fantascienza', 0, 1, '2026-01-20'),
-('0000-0002-2019-0000-B', 'Knives Out', 'Rian Johnson', 'Giallo', 0, 0, '2026-01-20'),
-('0000-0004-2010-0000-D', 'Inception', 'Christopher Nolan', 'Thriller', 0, 0, '2026-01-20'),
-('0000-0005-2004-0000-E', 'The Notebook', 'Nick Cassavetes', 'Romantico', 0, 0, '2026-01-20'),
-('0000-0006-2018-0000-F', 'A Quiet Place', 'John Krasinski', 'Horror', 0, 0, '2026-01-20'),
-('0000-0008-2018-0000-H', 'Bohemian Rhapsody', 'Bryan Singer', 'Biografico', 0, 0, '2026-01-20'),
-('0000-0009-1981-0000-I', 'Indiana Jones e i Predatori dell\'Arca Perduta', 'Steven Spielberg', 'Avventura', 0, 0, '2026-01-20'),
-('0000-0010-2019-0000-J', 'Joker', 'Todd Phillips', 'Distopico', 0, 0, '2026-01-20'),
-('0000-0011-1972-0000-K', 'Il Padrino', 'Francis Ford Coppola', 'Classico', 0, 0, '2026-01-20'),
-('0000-0012-2020-0000-L', 'My Octopus Teacher', 'Pippa Ehrlich', 'Documentario', 0, 0, '2026-01-20'),
-('0000-0013-2011-0000-M', 'Una Notte da Leoni 2', 'Todd Phillips', 'Commedia', 0, 0, '2026-01-20'),
-('0000-0014-1994-0000-N', 'Forrest Gump', 'Robert Zemeckis', 'Drammatico', 0, 0, '2026-01-20'),
-('0000-0015-1999-0000-O', 'Matrix', 'Lana e Lilly Wachowski', 'Azione', 0, 0, '2026-01-20'),
-('0000-0016-2001-0000-P', 'Shrek', 'Andrew Adamson', 'Animazione', 0, 0, '2026-01-20'),
-('0000-0017-1966-0000-Q', 'Il Buono, il Brutto, il Cattivo', 'Sergio Leone', 'Western', 0, 0, '2026-01-20'),
-('0000-0018-2016-0000-R', 'La La Land', 'Damien Chazelle', 'Musical', 0, 0, '2026-01-20'),
-('0000-0019-1974-0000-S', 'Chinatown', 'Roman Polanski', 'Noir', 0, 0, '2026-01-20'),
-('0000-0020-1998-0000-T', 'Saving Private Ryan', 'Steven Spielberg', 'Guerra', 0, 0, '2026-01-20'),
-('0000-0021-2015-0000-U', 'Creed', 'Ryan Coogler', 'Sportivo', 0, 0, '2026-01-20'),
-('0000-0022-2010-0000-V', 'Shutter Island', 'Martin Scorsese', 'Psicologico', 0, 0, '2026-01-20');
+INSERT INTO `film` (`isan`, `titolo`, `autore`, `genere`, `prezzo`, `data_aggiunta`, `filmID`) VALUES
+('000000019A2B0000Q0000001X', 'Il silenzio del tempo', 'Marco Bellini', 'Drammatico', 5, '2026-01-22', 1),
+('000000023F7C0000R0000002Y', 'Ombre nella notte', 'Laura Conti', 'Thriller', 6, '2026-01-22', 2),
+('000000038D4E0000S0000003Z', 'Ritorno a casa', 'Giovanni Rinaldi', 'Romantico', 4, '2026-01-22', 3),
+('000000041B9A0000T0000004W', 'L\'ultima missione', 'Andrea Moretti', 'Azione', 7, '2026-01-22', 4),
+('000000056C2F0000U0000005V', 'Oltre le stelle', 'Francesca De Luca', 'Fantascienza', 8, '2026-01-22', 5),
+('000000064E8D0000P0000006U', 'Il mistero del lago', 'Paolo Ferri', 'Giallo', 4, '2026-01-22', 6),
+('000000079F1C0000N0000007T', 'Sotto lo stesso cielo', 'Elena Vitale', 'Drammatico', 5, '2026-01-22', 7),
+('000000082A7B0000M0000008S', 'Codice Omega', 'Riccardo Sala', 'Fantascienza', 9, '2026-01-22', 8),
+('000000093C6D0000L0000009R', 'Fuga dal passato', 'Alessandro Greco', 'Thriller', 5, '2026-01-22', 9),
+('000000104D8F0000K0000010Q', 'Vite intrecciate', 'Sara Lombardi', 'Drammatico', 5, '2026-01-22', 10),
+('000000115B2A0000J0000011P', 'La città perduta', 'Matteo Galli', 'Avventura', 6, '2026-01-22', 11),
+('000000126F9C0000I0000012O', 'Incubo digitale', 'Davide Romano', 'Horror', 6, '2026-01-22', 12),
+('000000137A4E0000H0000013N', 'Amore senza tempo', 'Chiara Fontana', 'Romantico', 4, '2026-01-22', 13),
+('000000148D7B0000G0000014M', 'Oltre il confine', 'Luca Bianchi', 'Azione', 7, '2026-01-22', 14),
+('000000159C1F0000F0000015L', 'La verità nascosta', 'Marta Pellegrini', 'Giallo', 5, '2026-01-22', 15),
+('000000160E8A0000E0000016K', 'Universo parallelo', 'Stefano Ricci', 'Fantascienza', 8, '2026-01-22', 16),
+('000000171B9D0000D0000017J', 'Il prezzo del potere', 'Nicola Testa', 'Drammatico', 5, '2026-01-22', 17),
+('000000182F3C0000C0000018I', 'Notte di paura', 'Valentina Neri', 'Horror', 6, '2026-01-22', 18),
+('000000193A6E0000B0000019H', 'Strade incrociate', 'Federico Marin', 'Drammatico', 5, '2026-01-22', 19),
+('000000204C8F0000A0000020G', 'L\'erede segreto', 'Simone Costa', 'Avventura', 6, '2026-01-22', 20);
 
 -- --------------------------------------------------------
 
@@ -94,9 +94,12 @@ INSERT INTO `generi` (`nome`, `descrizione`) VALUES
 ('Guerra', 'Conflitti bellici e le loro conseguenze'),
 ('Horror', 'Contenuti volti a suscitare paura, terrore e inquietudine'),
 ('Musical', 'Storie narrate attraverso canzoni e performance musicali'),
+('Narrativa', 'produzione letteraria scritta con l\'intento di rientrare in uno specifico genere letterario, caratterizzata da temi, personaggi e situazioni ripetitive che attraggono particolari gruppi di lettori.'),
 ('Noir', 'Atmosfere cupe con personaggi moralmente ambigui'),
 ('Psicologico', 'Esplorazione profonda della psiche umana e dei conflitti interiori'),
 ('Romantico', 'Storie incentrate su relazioni amorose e sentimenti'),
+('Romanzo', '  '),
+('Saggio', 'non ha una trama lineare, ma si concentra su un\'idea, un tema o una riflessione personale, spesso guidata da una voce fuori campo che accompagna lo spettatore in un processo di pensiero critico e interrogativo.'),
 ('Sportivo', 'Storie incentrate su sport e atleti'),
 ('Storico', 'Ambientazioni in epoche passate con ricostruzioni storiche'),
 ('Thriller', 'Suspense, tensione e colpi di scena che tengono con il fiato sospeso'),
@@ -113,38 +116,36 @@ CREATE TABLE `libri` (
   `titolo` varchar(254) NOT NULL,
   `autore` varchar(254) NOT NULL,
   `genere` varchar(32) NOT NULL,
-  `quantita` int(11) NOT NULL DEFAULT 1,
   `prezzo` int(11) NOT NULL COMMENT 'prezzo al mese',
-  `data_aggiunta` date NOT NULL DEFAULT current_timestamp()
+  `data_aggiunta` date NOT NULL DEFAULT current_timestamp(),
+  `libroID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `libri`
 --
 
-INSERT INTO `libri` (`isbn`, `titolo`, `autore`, `genere`, `quantita`, `prezzo`, `data_aggiunta`) VALUES
-('9780060935467', 'Il piccolo principe', 'Antoine de Saint-Exupéry', 'Animazione', 0, 2, '2026-01-20'),
-('9780061120084', 'Sapiens: Da animali a dèi', 'Yuval Noah Harari', 'Documentario', 0, 0, '2026-01-20'),
-('9780140177398', 'Carri di fuoco', 'W. J. Weatherby', 'Sportivo', 0, 0, '2026-01-20'),
-('9780141187761', 'Addio alle armi', 'Ernest Hemingway', 'Guerra', 0, 0, '2026-01-20'),
-('9780143039433', 'Ombre rosse', 'Zane Grey', 'Western', 0, 0, '2026-01-20'),
-('9780316769480', 'Orgoglio e Pregiudizio', 'Jane Austen', 'Romantico', 0, 0, '2026-01-20'),
-('9780345503858', 'Hunger Games', 'Suzanne Collins', 'Azione', 0, 0, '2026-01-20'),
-('9780385121675', 'Shining', 'Stephen King', 'Horror', 0, 0, '2026-01-20'),
-('9780385504209', 'Il Codice da Vinci', 'Dan Brown', 'Thriller', 0, 0, '2026-01-20'),
-('9780441172719', 'Neuromante', 'William Gibson', 'Fantascienza', 0, 0, '2026-01-20'),
-('9780547778574', '1984', 'George Orwell', 'Distopico', 0, 0, '2026-01-20'),
-('9780618002221', 'Il Signore degli Anelli', 'J.R.R. Tolkien', 'Fantasy', 0, 0, '2026-01-20'),
-('9780670034696', 'Steve Jobs', 'Walter Isaacson', 'Biografico', 0, 0, '2026-01-20'),
-('9780679723134', 'Il grande sonno', 'Raymond Chandler', 'Noir', 0, 0, '2026-01-20'),
-('9780679732266', 'Delitto e castigo', 'Fëdor Dostoevskij', 'Psicologico', 0, 0, '2026-01-20'),
-('9780740725574', 'Guida galattica per gli autostoppisti', 'Douglas Adams', 'Commedia', 0, 0, '2026-01-20'),
-('9780743273564', 'Anna Karenina', 'Lev Tolstoj', 'Drammatico', 0, 0, '2026-01-20'),
-('9780743273571', 'L\'isola del tesoro', 'Robert Louis Stevenson', 'Avventura', 0, 0, '2026-01-20'),
-('9788804506081', 'La Divina Commedia', 'Dante Alighieri', 'Classico', 0, 0, '2026-01-20'),
-('9788804520704', 'I Promessi Sposi', 'Alessandro Manzoni', 'Storico', 0, 0, '2026-01-20'),
-('9788804668217', 'Il nome della rosa', 'Umberto Eco', 'Giallo', 0, 0, '2026-01-20'),
-('9788804669603', 'Cime tempestose', 'Emily Brontë', 'Musical', 0, 0, '2026-01-20');
+INSERT INTO `libri` (`isbn`, `titolo`, `autore`, `genere`, `prezzo`, `data_aggiunta`, `libroID`) VALUES
+('9788806229041', 'Il nome della rosa', 'Umberto Eco', 'Storico', 5, '2026-01-22', 121),
+('9788807881705', 'La solitudine dei numeri primi', 'Paolo Giordano', 'Narrativa', 4, '2026-01-22', 122),
+('9788806219288', 'Gomorra', 'Roberto Saviano', 'Saggio', 4, '2026-01-22', 123),
+('9788806221199', 'Io non ho paura', 'Niccolò Ammaniti', 'Narrativa', 3, '2026-01-22', 124),
+('9788807812662', 'Seta', 'Alessandro Baricco', 'Romanzo', 3, '2026-01-22', 125),
+('9788806227566', 'Il codice Da Vinci', 'Dan Brown', 'Thriller', 5, '2026-01-22', 126),
+('9788807883129', 'Harry Potter e la pietra filosofale', 'J.K. Rowling', 'Fantasy', 4, '2026-01-22', 127),
+('9788804668233', 'Il signore degli anelli', 'J.R.R. Tolkien', 'Fantasy', 5, '2026-01-22', 128),
+('9788807900161', '1984', 'George Orwell', 'Distopico', 3, '2026-01-22', 129),
+('9788806220673', 'Il vecchio e il mare', 'Ernest Hemingway', 'Classico', 3, '2026-01-22', 130),
+('9788806224732', 'Shining', 'Stephen King', 'Horror', 4, '2026-01-22', 131),
+('9788806228815', 'Il trono di spade', 'George R.R. Martin', 'Fantasy', 6, '2026-01-22', 132),
+('9788806218892', 'Il piccolo principe', 'Antoine de Saint-Exupéry', 'Classico', 2, '2026-01-22', 133),
+('9788806222554', 'La ragazza del treno', 'Paula Hawkins', 'Thriller', 4, '2026-01-22', 134),
+('9788806226064', 'Il cacciatore di aquiloni', 'Khaled Hosseini', 'Narrativa', 4, '2026-01-22', 135),
+('9788806229980', 'Fahrenheit 451', 'Ray Bradbury', 'Fantascienza', 3, '2026-01-22', 136),
+('9788806221441', 'Dracula', 'Bram Stoker', 'Horror', 3, '2026-01-22', 137),
+('9788806224015', 'Il grande Gatsby', 'F. Scott Fitzgerald', 'Classico', 3, '2026-01-22', 138),
+('9788806227122', 'Norwegian Wood', 'Haruki Murakami', 'Classico', 4, '2026-01-22', 139),
+('9788806225333', 'La strada', 'Cormac McCarthy', 'Guerra', 4, '2026-01-22', 140);
 
 -- --------------------------------------------------------
 
@@ -158,8 +159,8 @@ CREATE TABLE `noleggi` (
   `data_noleggio` date NOT NULL,
   `data_scadenza` date NOT NULL,
   `prezzo` decimal(10,2) NOT NULL,
-  `libro` varchar(13) DEFAULT NULL,
-  `film` varchar(96) DEFAULT NULL
+  `libro` int(11) DEFAULT NULL,
+  `film` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -183,6 +184,7 @@ CREATE TABLE `persone` (
 --
 
 INSERT INTO `persone` (`cf`, `nome`, `cognome`, `tel`, `data_nascita`, `luogo_nascita`, `email`) VALUES
+('BRGASD67B60D969A', 'Alessandro', 'Brugnatti', '3556214555', '1967-02-02', 'Genova', '3netta@gmail.com'),
 ('BRGGTM07B60D969A', 'Greta', 'Brugnatti', '3701392265', '2007-02-20', 'Genova', 'goghi2007@gmail.com');
 
 -- --------------------------------------------------------
@@ -224,7 +226,8 @@ CREATE TABLE `utenti` (
 --
 
 INSERT INTO `utenti` (`id_utente`, `username`, `password`, `ruolo`, `cf`) VALUES
-(3, 'lookatgreta', '$2y$10$gs1fOuurta87BGnfNuRfQ.NsGtlnt3Fcob4dJtFnPuZWINr6wzxcO', 'admin', 'BRGGTM07B60D969A');
+(3, 'lookatgreta', '$2y$10$gs1fOuurta87BGnfNuRfQ.NsGtlnt3Fcob4dJtFnPuZWINr6wzxcO', 'admin', 'BRGGTM07B60D969A'),
+(4, '3netta', '$2y$10$8XiC3rJdohmJBnQ0SL5JcuF8ojH5A7roTHjm9nx2uyo/65Y3bdwL6', 'utente', 'BRGASD67B60D969A');
 
 --
 -- Indici per le tabelle scaricate
@@ -234,7 +237,7 @@ INSERT INTO `utenti` (`id_utente`, `username`, `password`, `ruolo`, `cf`) VALUES
 -- Indici per le tabelle `film`
 --
 ALTER TABLE `film`
-  ADD PRIMARY KEY (`isan`) USING BTREE,
+  ADD PRIMARY KEY (`filmID`),
   ADD KEY `genere` (`genere`);
 
 --
@@ -247,7 +250,7 @@ ALTER TABLE `generi`
 -- Indici per le tabelle `libri`
 --
 ALTER TABLE `libri`
-  ADD PRIMARY KEY (`isbn`),
+  ADD PRIMARY KEY (`libroID`),
   ADD KEY `genere` (`genere`);
 
 --
@@ -284,6 +287,18 @@ ALTER TABLE `utenti`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `film`
+--
+ALTER TABLE `film`
+  MODIFY `filmID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `libri`
+--
+ALTER TABLE `libri`
+  MODIFY `libroID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+
+--
 -- AUTO_INCREMENT per la tabella `noleggi`
 --
 ALTER TABLE `noleggi`
@@ -293,7 +308,7 @@ ALTER TABLE `noleggi`
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Limiti per le tabelle scaricate
@@ -316,8 +331,8 @@ ALTER TABLE `libri`
 --
 ALTER TABLE `noleggi`
   ADD CONSTRAINT `noleggi_ibfk_1` FOREIGN KEY (`id_utente`) REFERENCES `utenti` (`id_utente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `noleggi_ibfk_2` FOREIGN KEY (`libro`) REFERENCES `libri` (`isbn`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `noleggi_ibfk_3` FOREIGN KEY (`film`) REFERENCES `film` (`isan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `noleggi_ibfk_2` FOREIGN KEY (`film`) REFERENCES `film` (`filmID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `noleggi_ibfk_3` FOREIGN KEY (`libro`) REFERENCES `libri` (`libroID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `utenti`

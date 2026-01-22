@@ -11,7 +11,7 @@
     
     $servername = "localhost";
     $username = "root";
-    $passwordDb = "bXHG8p!!4BM9Ngx"; //bxHG8p!!48M9Ngx
+    $passwordDb = ""; //bxHG8p!!48M9Ngx
     $dbname = "i5ai3";
     
 
