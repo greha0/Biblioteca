@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <?php
-// Se l'utente è già loggato, reindirizza alla homepage
+// Se l'utente è già loggato, reindirizza alla sua area utente
         if(isset($_SESSION["id_utente"])){
             header("Location: areaUtente.php");
             exit;

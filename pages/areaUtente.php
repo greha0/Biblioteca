@@ -34,8 +34,7 @@ session_start();
                 }
 
                 if($_SESSION["ruolo"]=="utente"){
-                    echo "<div class='cell' onclick='cambiaPagina(`prenota.php`)'> Esplora i libri </div>
-                        <div class='cell' onclick='cambiaPagina(`prenota.php`)'> Esplora i film </div>";
+                    echo "<div class='cell' onclick='cambiaPagina(`prenota.php`)'> Prenota</div>";
                 } 
             }
             ?>
@@ -47,10 +46,50 @@ session_start();
         <!-- FINE NAVBAR -->
         <div class="content">
             Bentornato <?php echo $_SESSION["username"]; ?> nella tua area personale!
-            <br><br>
-            Qui potrai gestire le tue prenotazioni, visualizzare lo storico dei tuoi noleggi e modificare le tue informazioni personali.
+            <!--Visualizza qui le tue prenotazioni, modifica i tuoi dati o esplora le risorse disponibili.-->
+            <div id="prenotazioniUtente">
+                <h2>Le tue prenotazioni:</h2>
+                <?php
+                    include("../php/connessioneDatabase.php");
 
-            Coming soon...
+                    $id_utente = $_SESSION["id_utente"];
+
+                    // Query per ottenere le prenotazioni dell'utente
+                    $query = "SELECT * FROM `noleggi` WHERE id_utente = $_SESSION[id_utente]";
+
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("i", $id_utente);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        echo "<table border='1'>
+                                <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Titolo</th>
+                                    <th>Data Prenotazione</th>
+                                    <th>Data Scadenza</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                    <td>" . htmlspecialchars($row['tipo']) . "</td>
+                                    <td>" . htmlspecialchars($row['titolo']) . "</td>
+                                    <td>" . htmlspecialchars($row['data_prenotazione']) . "</td>
+                                    <td>" . htmlspecialchars($row['data_scadenza']) . "</td>
+                                  </tr>";
+                        }
+                        echo "</tbody></table>";
+                    } else {
+                        echo "<p>Non hai prenotazioni attive.</p>";
+                    }
+
+                    $stmt->close();
+                    $conn->close();
+                ?>
+
         </div>
     </body>
 

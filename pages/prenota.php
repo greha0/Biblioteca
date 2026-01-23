@@ -17,6 +17,7 @@
         <div class="slideBar">
             <div class="cell" onclick="cambiaPagina('../index.php')"> Homepage </div>
             <div class="cell" onclick="cambiaPagina('prenota.php')"> Prenota </div>
+            <div class="cell" onclick="cambiaPagina('areaUtente.php')" id="areaUtente">  Area Utente </div>
             <form action="../php/logout.php" method="POST">
                 <button type="submit" class="cell" id="logoutButton"> Logout </button>
             </form>
@@ -89,10 +90,10 @@
                     
                     // Costruisci la query con i filtri inseriti nelle subquery
                     $query = "SELECT * FROM (
-                        SELECT titolo, autore, genere, prezzo, isbn AS codice, quantita, 'Libro' AS tipo 
+                        SELECT libroID AS id, titolo, autore, genere, prezzo, isbn AS codice, 'Libro' AS tipo 
                         FROM libri $whereConditions
                         UNION
-                        SELECT titolo, autore, genere, prezzo, isan AS codice, quantita, 'Film' AS tipo 
+                        SELECT filmID AS id, titolo, autore, genere, prezzo, isan AS codice, 'Film' AS tipo 
                         FROM film $whereConditions
                     ) AS risultati" . $tipoFilter;
 
@@ -108,7 +109,6 @@
                                     <th>Autore</th>
                                     <th>Genere</th>
                                     <th>Prezzo</th>
-                                    <th>Quantità Disponibile</th>
                                 </tr>
                                 </thead>
                                 <tbody>";
@@ -117,29 +117,36 @@
                         // Determina il tipo di risorsa
                             $tipo = $row["tipo"];
 
-                        // Stampa solo le risorse disponibili
-                            if ($row["quantita"] <= 0) {
-                                continue;
-                            }
+                        // Se già prenotato da qualcun altro, non mostrare
+                        if($tipo == "Libro"){
+                            $checkQuery = "SELECT * FROM noleggi WHERE libro = " . $row["id"] . " AND data_scadenza >= NOW()";
+                        } else {
+                            $checkQuery = "SELECT * FROM noleggi WHERE film = " . $row["id"] . " AND data_scadenza >= NOW()";
+                        }
+                        $resultCheck = $conn->query($checkQuery);
+                        if($resultCheck && $resultCheck->num_rows > 0){
+                            continue; // Salta la risorsa se già prenotata
+                        }
+
                             // Stampa la riga della tabella
+                            $prefix = ($row["tipo"] === "Libro") ? 'L' : 'F';
                             echo "<tr>
-                                    <td><input type='checkbox' class='checkbox-risorsa' name='selezionati[]' value='" . $row["codice"] . "' data-prezzo='" . $row["prezzo"] . "'></td>
+                                    <td><input type='checkbox' class='checkbox-risorsa' name='selezionati[]' value='" . $prefix . ":" . $row["id"] . "' data-prezzo='" . $row["prezzo"] . "'></td>
                                     <td>" . $tipo . "</td>
                                     <td>" . $row["titolo"] . "</td>
                                     <td>" . $row["autore"] . "</td>
                                     <td>" . $row["genere"] . "</td>
                                     <td>" . $row["prezzo"] . " €</td>
-                                    <td>" . $row["quantita"] . "</td>
                                   </tr>";
                         }
                         // Chiusura della tabella
 
                         // Aggiunta del campo data scadenza e del prezzo totale
                         echo "</tbody></table>";
-                        echo "<label> Data Scadenza: </label>";
-                        echo "<input type='date' name='data_scadenza' required>";
-                        echo "<label> Prezzo Totale: </label>";
-                        echo "<span id='prezzoTotale'>0</span> €";
+                        echo "<br><label> Data Scadenza: </label>";
+                        echo "<input type='date' name='data_scadenza' required> <br> <br>";
+                        echo "<label> Prezzo Totale: </label> ";
+                        echo "<span id='prezzoTotale'>0</span> € <br> ";
                         echo "<button type='submit'> Prenota Risorse Selezionate </button>";
                         echo "</form>";
                         echo "<script>
@@ -149,6 +156,7 @@
                                     $('.checkbox-risorsa:checked').each(function() {
                                         totale += parseFloat($(this).data('prezzo'));
                                     });
+                                    // Aggiorna il prezzo totale visualizzato
                                     $('#prezzoTotale').text(totale.toFixed(2));
                                 });
                             });
